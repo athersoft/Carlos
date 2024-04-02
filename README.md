@@ -11,12 +11,17 @@
 ## Descripción
 
 > [!NOTE]
-> Crear una breve descripción de su proyecto.
+> Los ojos de Carlos.
 
 ### Funcionalidades
 
 > [!NOTE]
-> Crear una lista numerada con las funcionalidades propuestas para su proyecto.
+> - Cámara en vivo de los ojos de Carlos.
+> - Inicio de sesión.
+> - Creación de cuenta.
+> - Listado de encuentros.
+> - Alerta de encuentro.
+> - Monitoreo del estado de Carlos.
 
 ## Prototipo
 
