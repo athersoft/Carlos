@@ -1,8 +1,25 @@
 body{
-    background-color: black;
+    background-color: #181818;
     width: 300px;
 }
 
 html{
     color: white;
+    text-align: center;
 }
+
+#white{
+    filter: invert(1);
+}
+
+#left{
+    text-align: left;
+}
+
+/*
+Background: #181818
+Base: #212121
+Base Stroke: #828282
+Highlight: #FF7F37
+Primary Text: #FFFFFF
+Secondary Text: #CACACA
