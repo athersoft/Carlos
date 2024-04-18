@@ -1,6 +1,5 @@
 body{
     background-color: #181818;
-    width: 300px;
 }
 
 html{
@@ -17,6 +16,7 @@ html{
 }
 
 footer{
+    margin-top: 128px;
     background-color: #212121;
 }
 
