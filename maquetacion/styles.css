@@ -16,8 +16,12 @@ html{
 }
 
 footer{
-    margin-top: 128px;
+    margin-top: auto;
     background-color: #212121;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
 }
 
 button{
