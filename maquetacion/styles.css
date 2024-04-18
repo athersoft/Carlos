@@ -16,6 +16,19 @@ html{
     text-align: left;
 }
 
+footer{
+    background-color: #212121;
+}
+
+button{
+    background-color: #212121;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    width: 90px;
+    border: 0px;
+}
+
 /*
 Background: #181818
 Base: #212121
