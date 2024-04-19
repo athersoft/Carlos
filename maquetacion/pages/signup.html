@@ -1,16 +1,28 @@
 <!DOCTYPE html>
-    <html>
-        <header>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Base Page</title>
 
-            <link rel="stylesheet" href="../styles.css">
-        </header>
+        <!-- below we are including the  
+         jQuery and jQuery plugin .js files -->
+        <script src= 
+            "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> 
+        </script> 
+        <script src= 
+            "https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"> 
+        </script> 
+        <script src= 
+            "https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"> 
+        </script> 
 
-        <head>          
-            
-        </head>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <link rel="stylesheet" href="../styles.css">
+    </head>
 
-
-        <body>
+    <body>
+        <main>
             <h1>Create an account</h1>
             Enter you email to sign up for this app
             <br>
@@ -20,16 +32,19 @@
                 <form>
                     <br>
                     <label for="fname"></label><br>
-                    <input type="text" id="fname" name="fname"><br>
+                    <input type="text" id="email" name="Email" placeholder="example@domain.org"><br>
                 </form>
                 <br>
-                <button id = "signup">Sign up with email</button>
+                <a href="index.html">
+                    <button id = "signup">Sign up with email</button>
+                </a>
                 <br>
                 <br>
                 <a href="login.html">
                     <button id = "login">Log in with my account</button>
                 </a>
             </div>
-        </body>
+        </main>
+    </body>
 
-    </html>
+</html>

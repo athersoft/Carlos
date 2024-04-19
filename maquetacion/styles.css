@@ -1,10 +1,46 @@
 body{
     background-color: #181818;
+    width: auto;
+    font-family: "Lexend", sans-serif;
 }
 
 html{
     color: white;
     text-align: center;
+    font-family: "Lexend", sans-serif;
+}
+
+header{
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin-top: 0;
+    padding: 4px;
+    background-color: #212121;
+    border-bottom: 2px solid #828282;
+    font-family: "Lexend", sans-serif;
+}
+
+footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    margin-bottom: 0;
+    background-color: #212121;
+    border-top: 2px solid #828282;
+    font-family: "Lexend", sans-serif;
+}
+
+button{
+    font-family: "Lexend", sans-serif;
+    background-color: #212121;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    width: 90px;
+    border: 0px;
 }
 
 #white{
@@ -17,26 +53,14 @@ html{
 
 #nav-button{
     color: white;
-    width: 48px;
-    height: 48px;
+    font-size: 48px;
 }
-
-footer{
-    margin-top: auto;
-    background-color: #212121;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
+#nav-button:hover{
+    color: #FF7F37;
 }
-
-button{
-    background-color: #212121;
-    color: white;
-    align-items: center;
-    justify-content: center;
-    width: 90px;
-    border: 0px;
+#nav-button-active{
+    color: #FF7F37;
+    font-size: 48px;
 }
 
 #blue{
@@ -47,12 +71,14 @@ button{
     background-color: #FF7F37;
     width: 250px;
     height: 32px;
+    border-radius: 5px;
 }
 
 #login{
     background-color: #828282;
     width: 250px;
     height: 32px;
+    border-radius: 5px;
 }
 
 
