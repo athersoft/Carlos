@@ -15,6 +15,12 @@ html{
     text-align: left;
 }
 
+#nav-button{
+    color: white;
+    width: 48px;
+    height: 48px;
+}
+
 footer{
     margin-top: auto;
     background-color: #212121;
