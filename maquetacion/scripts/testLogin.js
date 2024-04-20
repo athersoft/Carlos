@@ -1,3 +1,42 @@
+function validaDV(run) {
+    // Se separa el número del dígito verificador
+    const [numero, dv] = run.replace("-K", "-k").split("-");
+  
+    // Aquí se debe aplicar módulo 11. La función se extrajo de:
+    // https://validarunchile.cl/calcular-run-en-javascript.php
+    // ! OJO: Es una función que se llama a sí misma.
+    const dvVer = ((T) => {
+        let M = 0,
+            S = 1;
+        for (; T; T = Math.floor(T / 10)) S = (S + (T % 10) * (9 - (M++ % 6))) % 11;
+        return S ? S - 1 : "k";
+    })(numero);
+  
+    // Se compara el dígito verificador calculado con el ingresado
+    return dvVer == dv;
+}
+
+/**
+ * Se agregan las reglas personalizadas al plugin jQuery Validation. Se
+ * encargan de validar el formato (sin puntos, con guión) y el dígito verificador.
+ * @see https://jqueryvalidation.org/
+ */
+$.validator.addMethod(
+    "run",
+    function (value, element) {
+        return this.optional(element) || /^[0-9]{7,8}-[0-9Kk]{1}$/.test(value);
+    },
+    "El R.U.N. ingresado es inválido"
+);
+  
+$.validator.addMethod(
+    "rundv",
+    function (value, element) {
+        return this.optional(element) || validaDV(value);
+    },
+    "El dígito verificador del R.U.N. es inválido"
+);
+
 $(document).ready(() => {
     console.log("test.js cargado");
 
@@ -278,7 +317,7 @@ $(document).ready(() => {
             $("#comuna").append('<option value="2">Calbuco</option>');
             $("#comuna").append('<option value="3">Cochamó</option>');
             $("#comuna").append('<option value="4">Fresia</option>');
-            $("#comuna").append('<option value="5">Frrutillar</option>');
+            $("#comuna").append('<option value="5">Frrunillar</option>');
             $("#comuna").append('<option value="6">Los Muermos</option>');
             $("#comuna").append('<option value="7">Llanquihue</option>');
             $("#comuna").append('<option value="8">Maullín</option>');
@@ -389,21 +428,54 @@ $(document).ready(() => {
     $("#formValidation").validate({
 
         rules: {
+            name: {
+                required: true,
+            },
+            run: {
+                required: true,
+                run: true,
+                rundv: true,
+            },
             email: {
                 required: true,
                 email: true,
             },
             password: {
                 required: true,
+                minlength: 8,
+            },
+            "password-confirm": {
+                required: true,
+                equalTo: "#password",
+            },
+            tyc: {
+                required: true,
             },
         },
         messages: {
+            name:
+            {
+                required: "Debe ingresar su nombre",
+            },
+            run: {
+                required: "El R.U.N. es requerido",
+                run: "Formato: Sin puntos, con guión",
+                rundv: "El dígito verificador no es válido",
+            },
             email: {
                 required: "El email es obligatorio",
                 email: "El email no es válido",
             },
             password: {
                 required: "La contraseña es obligatoria",
+                minlength: "La contraseña debe ser de almenos 8 carácteres",
+            },
+            "password-confirm": {
+                required: "La confirmación de contraseña es requerida",
+                equalTo: "Las contraseñas deben coincidir",
+            },
+            tyc: {
+                required: "",
             },
         },
 
