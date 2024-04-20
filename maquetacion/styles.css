@@ -2,6 +2,11 @@ body{
     background-color: #181818;
     width: auto;
     font-family: "Lexend", sans-serif;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    justify-content: space-around;
+    min-height: 80vh;
 }
 
 html{
@@ -41,6 +46,13 @@ button{
     justify-content: center;
     width: 90px;
     border: 0px;
+    margin-bottom: 30px;
+}
+
+label.error{
+    font-family: "Lexend", sans-serif;
+    font-weight: 300;
+    color: #ff0000;
 }
 
 #white{
@@ -81,6 +93,48 @@ button{
     border-radius: 5px;
 }
 
+.input_container{
+    width: 100%;
+    padding: 0px;
+}
+.input_container .input-row{
+    margin-top: 12px;
+}
+.input_container select{
+    resize: none;
+    width: 90%;
+    height: 28px;
+    margin: 0 0 3px;
+    background-color: #212121;
+    color: #ffffff;
+    border-radius: 5px;
+    border: 1px solid #828282;
+    outline: 0;
+}
+input[type="checkbox"] {
+    transform: scale(3); /* Increase the size of the checkbox */
+}
+.input_container input:not([type="submit"]){
+    width: 80%;
+    margin: 0 0 3px;
+    background-color: #212121;
+    color: #ffffff;
+    padding: 10px 15px;
+    height: 8px;
+    line-height: 30px;
+    border-radius: 5px;
+    border: 1px solid #828282;
+    outline: 0;
+}
+.input_container input:not([type="submit"]):focus,
+.input_container select:focus{
+    border-color: #FF7F37;
+}
+
+*::-webkit-input-placeholder{
+    opacity: 1;
+    color: #828282;
+}
 
 /*
 Background: #181818
