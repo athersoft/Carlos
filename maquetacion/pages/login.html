@@ -3,19 +3,11 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Base Page</title>
+        <title>Log In</title>
 
-        <!-- below we are including the  
-         jQuery and jQuery plugin .js files -->
-        <script src= 
-            "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> 
-        </script> 
-        <script src= 
-            "https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"> 
-        </script> 
-        <script src= 
-            "https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"> 
-        </script> 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+        <script type="text/javascript" src="../scripts/login.js"></script>
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
         <link rel="stylesheet" href="../styles.css">
@@ -24,34 +16,26 @@
     <body>
         <main>
             <h1>Log in with and existing account</h1>
-            Enter you email to log in
+            Enter you email and password to log in
             <br>
             
-            <div>
-                <br>
-                <form>
-                    E-mail
-                    <label for="E-mail"></label><br>
-                    <input type="text" id="E-mail" name="E-mail" placeholder="example@domain.org"><br>
+            <div class = "input_container">
+                <form name="loginValidation" id="loginValidation" action="index.html">
+                    <div class="input-row">
+                        <input type="email" name="email" id="email" placeholder="e-mail: example@domain.com" required>    
+                    </div>
+                    <div class="input-row">
+                        <input type="password" name="password" id="password" placeholder="Password" required>    
+                    </div>
+                        <br>
+                        <button type="submit" id = "signup">Log in</button>
+                    </div>
                 </form>
-                <br>
-                <form>
-                    Password
-                    <label for="Password"></label><br>
-                    <input type="text" id="Password" name="Password" placeholder="Password"><br>
-                </form>
-    
-                <br>
-                <a href="index.html">
-                    <button id = "login">Log in with my account</button>
-                </a>
-                <br>
-                <br>
-                <a href="signup.html">
-                    <button id = "signup">Sign up with email</button>
-                </a>
-                
             </div>
+            <br>
+            <a href="signup.html">
+                <button id = "login">Create an account</button>
+            </a>
         </main>
     </body>
 </html>        
