@@ -1,10 +1,7 @@
 body{
     background-color: #181818;
     font-family: "Lexend", sans-serif;
-    display: flex;
-    align-items: center;
     margin: 0;
-    justify-content: space-around;
     min-height: 80vh;
 }
 
@@ -45,7 +42,7 @@ button{
     justify-content: center;
     width: 90px;
     border: 0px;
-    margin-bottom: 30px;
+    margin-bottom: 0px;
 }
 
 form{
@@ -98,6 +95,22 @@ label.error{
     height: 32px;
     border-radius: 5px;
 }
+
+ul{
+    list-style: none;
+}
+
+li{
+    margin: 16px;
+}
+
+.circle {
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
 
 .input_container{
     width: 100%;

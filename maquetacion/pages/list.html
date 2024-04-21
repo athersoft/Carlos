@@ -16,11 +16,12 @@
         <script src= 
             "https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"> 
         </script> 
-
+        
+        <script src = "../scripts/victim.js"></script>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
         <link rel="stylesheet" href="../styles.css">
     </head>
-
+    
     <body>
         <div id = "left">
             <a href="config.html">
@@ -29,7 +30,21 @@
         </div>
 
         <main>
+            <h1>Victim list</h1>
 
+            <ul>
+                <button>Edit</button>                 
+                <button>+</button>
+            </ul>
+
+            <ul>
+                <li>Victim 1 <div class="circle" style="background-color:green;" onclick="changeColor(this)"></div></li>
+                <li>Victim 2 <div class="circle" style="background-color:red;" onclick="changeColor(this)"></div></li>
+                <li>Victim 3 <div class="circle" style="background-color:red;" onclick="changeColor(this)"></div></li>
+                <li>Victim 4 <div class="circle" style="background-color:yellow;" onclick="changeColor(this)"></div></li>
+                <li>Victim 5 <div class="circle" style="background-color:red;" onclick="changeColor(this)"></div></li>
+                <li>Victim 6 <div class="circle" style="background-color:green;" onclick="changeColor(this)"></div></li>
+            </ul>
         </main>
 
         <footer>
