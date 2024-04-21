@@ -1,31 +1,36 @@
 $(document).ready(() => {
-  console.log("login.js cargado");
+    console.log("login.js cargado");
 
-  // Se comienza la validación del formulario usando JQuery Validator
+    // Se comienza la validación del formulario usando JQuery Validator
 
-  $("#login").validate({
-    rules: {
-      email: {
-        required: true,
-        email: true,
-      },
-      password: {
-        required: true,
-      },
-    },
-    messages: {
-      email: {
-        required: "El email es obligatorio",
-        email: "El email no es válido",
-      },
-      password: {
-        required: "La contraseña es obligatoria",
-      },
-    },
-    submitHandler: () => {
-      const email = $("#email").val();
-      const password = $("#password").val();
-      console.table({ email, password });
-    },
-  });
+    $("#loginValidation").validate({
+
+        rules: {
+            email: {
+                required: true,
+                email: true,
+            },
+            password: {
+                required: true,
+                minlength: 8,
+            },
+        },
+        messages: {
+            email: {
+                required: "Debe ingresar un correo electrónico",
+                email: "El email no es válido",
+            },
+            password: {
+                required: "Debe ingresar una contraseña",
+                minlength: "Las contraseñas son de al menos 8 carácteres"
+            },
+        },
+        submitHandler: function(form)
+        {
+            const email = $("#email").val();
+            const password = $("#password").val();
+            console.table({ email, password });
+            form.submit();
+        }
+      });
 });

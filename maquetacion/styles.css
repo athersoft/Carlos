@@ -1,6 +1,5 @@
 body{
     background-color: #181818;
-    width: auto;
     font-family: "Lexend", sans-serif;
     display: flex;
     align-items: center;
@@ -47,6 +46,13 @@ button{
     width: 90px;
     border: 0px;
     margin-bottom: 30px;
+}
+
+form{
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    max-width: 360px;
 }
 
 label.error{
@@ -113,6 +119,7 @@ label.error{
 }
 input[type="checkbox"] {
     transform: scale(3); /* Increase the size of the checkbox */
+    margin-top: 12px;
 }
 .input_container input:not([type="submit"]){
     width: 80%;
@@ -134,6 +141,10 @@ input[type="checkbox"] {
 *::-webkit-input-placeholder{
     opacity: 1;
     color: #828282;
+}
+
+.tyc{
+    font-size: 12px;
 }
 
 /*
