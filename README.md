@@ -98,6 +98,6 @@
 [android-development-web]: https://developer.android.com/
 
 [figma-prot-badge]: https://img.shields.io/badge/Ver%20prototipo%20en%20Figma-F24E1E?logo=figma&logoColor=fff&style=flat
-[figma-prot-url]: https://www.figma.com/proto/QaKiq61umExCzpWQDkRnlv/Maqueta-UI?type=design&t=GG4iBq3RFbpwbZLF-0&scaling=scale-down&page-id=0%3A1&node-id=16-264&starting-point-node-id=74%3A529
+[figma-prot-url]: https://www.figma.com/proto/QaKiq61umExCzpWQDkRnlv/Maqueta-UI?type=design&t=GG4iBq3RFbpwbZLF-0&scaling=scale-down&page-id=0%3A1&node-id=74-529&starting-point-node-id=74%3A529
 [figma-dis-badge]: https://img.shields.io/badge/Ver%20diseño%20UI%20en%20Figma-F24E1E?logo=figma&logoColor=fff&style=flat
 [figma-dis-url]: https://www.figma.com/file/QaKiq61umExCzpWQDkRnlv/Maqueta-UI?type=design&node-id=0-1&mode=design&t=nlpD4y9IjTlzBTYb-0
