@@ -2,31 +2,31 @@
 
 <div align="center">
 
-[![angular-badge-sm]][angular-web] [![css3-badge-sm]][css3-web] [![eslint-badge-sm]][eslint-web] [![express-badge-sm]][express-web] [![figma-badge-sm]][figma-web] [![git-badge-sm]][git-web] [![github-badge-sm]][github-web] [![html5-badge-sm]][html5-web] [![ionic-badge-sm]][ionic-web] [![js-badge-sm]][js-web] [![mongodb-badge-sm]][mongodb-web] [![mysql-badge-sm]][mysql-web] [![nodejs-badge-sm]][nodejs-web] [![npm-badge-sm]][npm-web] [![postgresql-badge-sm]][postgresql-web] [![prettier-badge-sm]][prettier-web] [![react-badge-sm]][react-web] [![tailwind-badge-sm]][tailwind-web] [![ts-badge-sm]][ts-web] [![vscode-badge-sm]][vscode-web] [![yarn-badge-sm]][yarn-web]
+[![css3-badge-sm]][css3-web] [![figma-badge-sm]][figma-web] [![git-badge-sm]][git-web] [![github-badge-sm]][github-web] [![html5-badge-sm]][html5-web] [![ionic-badge-sm]][ionic-web] [![js-badge-sm]][js-web] [![mysql-badge-sm]][mysql-web] [![nodejs-badge-sm]][nodejs-web] [![npm-badge-sm]][npm-web] [![vscode-badge-sm]][vscode-web]
 
 [![ios-development-badge-sm]][ios-development-web] [![android-development-badge-sm]][android-development-web]
 
 </div>
 
+## Integrantes
+
+> - Bryam Gonzalez Mendez
+> - Alejandro Malvacias Pimentel
+> - Pablo Paillalef Avendaño
+> - Benjamín Vega Mardones
+
 ## Descripción
 
-> [!NOTE]
-> Los ojos de Carlos.
+> La aplicación es un software que permite conectarse al robot "Carlos". La aplicación muestra la lista de víctimas que Carlos encuentra en su camino, el estado de Carlos, y permite ver lo que Carlos está viendo mientras explora.
 
 ### Funcionalidades
 
-> [!NOTE]
 > - Cámara en vivo de los ojos de Carlos.
 > - Inicio de sesión.
 > - Creación de cuenta.
 > - Listado de encuentros.
 > - Alerta de encuentro.
 > - Monitoreo del estado de Carlos.
-
-## Prototipo
-
-> [!NOTE]
-> Debe reemplazar los URL de los archivos Figma. Ver al final de este archivo, ahí estan los links.
 
 <div align="center">
 
@@ -36,8 +36,19 @@
 
 ## Maquetación web
 
-> [!NOTE]
-> Debe incluir los archivos de maquetación en la carpeta respectiva, e incluir una breve descripción de dichos archivos.
+- images: Carpeta donde se almacenan todas las imágenes utilizadas en la página web. 
+- pages: Carpeta donde se almacenan todas las páginas HTML de la página web.
+    - base.html: Página que se utiliza en el desarollo como base para duplicar y crear otras.
+    - config.html: Página que permite iniciar sesión o crear una cuenta.
+    - index.html: Página que muestra el estado de conexión del robot.
+    - list.html: Página que muestra la lista de víctimas encontradas por el robot Carlos.
+    - live.html: Página que muestra un video o representación de lo que el robot Carlos está viendo (de momento hay una imagen de un Carlos aleatorio con motivos de testeo).
+    - login.html: Página donde el usuario puede iniciar sesión.
+    - signup.html: Página donde el usuario puede crear su cuenta ingresando los datos necesarios.
+- scripts: Carpeta donde se almacenan todos los archivos de JavaScript propios para el funcionamiento de la página web.
+    - login.js: Archivo de JavaScript que se encarga de validar los datos ingresados en el inicio de sesión.
+    - signup.js: Archivo de JavaScript que se encarga de validar los datos ingresados en la creación de la cuenta.
+    - victim.js: Archivo de JavaScript que se encarga de cambiar el color del estado de la víctima en la lista.
 
 [js-badge-sm]: https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=000&style=flat
 [js-web]: https://developer.mozilla.org/es/docs/Web/JavaScript
@@ -87,6 +98,6 @@
 [android-development-web]: https://developer.android.com/
 
 [figma-prot-badge]: https://img.shields.io/badge/Ver%20prototipo%20en%20Figma-F24E1E?logo=figma&logoColor=fff&style=flat
-[figma-prot-url]: #
+[figma-prot-url]: https://www.figma.com/proto/QaKiq61umExCzpWQDkRnlv/Maqueta-UI?type=design&t=GG4iBq3RFbpwbZLF-0&scaling=scale-down&page-id=0%3A1&node-id=16-264&starting-point-node-id=74%3A529
 [figma-dis-badge]: https://img.shields.io/badge/Ver%20diseño%20UI%20en%20Figma-F24E1E?logo=figma&logoColor=fff&style=flat
-[figma-dis-url]: #
+[figma-dis-url]: https://www.figma.com/file/QaKiq61umExCzpWQDkRnlv/Maqueta-UI?type=design&node-id=0-1&mode=design&t=nlpD4y9IjTlzBTYb-0
