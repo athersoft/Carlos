@@ -1,0 +1,24 @@
+.ui-footer-button
+{
+    --background: #212121;
+    --background-focused: #212121;
+    --background-activated: #FF7F37;
+  
+    --color: #FFFFFF;
+    --color-focused: #d46f34;
+    --color-selected: #FF7F37;
+  
+    --border-radius: 0;
+    --border-color: #00000000;
+    --border-style: solid;
+    --border-width: 1px;
+  
+    --box-shadow: 0 2px 6px 0 rgb(0, 0, 0, 0);
+  
+    --ripple-color: #FF7F37;
+}
+
+.bottom-tab-bar
+{
+    background: #212121;
+}
