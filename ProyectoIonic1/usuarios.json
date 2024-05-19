@@ -1,0 +1,21 @@
+{"usuarios":[
+    {
+        "nombre": "Bonifacio Sandemetrio",
+        "rut": "12345678-9",
+        "email": "bonipro@gmail.com",
+        "clave": "pera",
+        "region": "Atacama",
+        "comuna": "Copiapo"
+    },
+
+    {
+        "nombre": "Armando Casas",
+        "rut": "98765432-1",
+        "email": "ArCa666@gmail.com",
+        "clave": "2",
+        "region": "Magallanes",
+        "comuna": "Antartica"
+    }
+
+]
+}
