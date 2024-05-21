@@ -14,17 +14,16 @@
   </ion-header>
   <app-explore-container name="Victims List page"></app-explore-container>
   
+  <div *ngIf="victimas">
   <div class="global-content">
     <div class="victims-list-container">
       <ul>
-        <li>Victim 1</li>
-        <li>Victim 2</li>
-        <li>Victim 3</li>
-        <li>Victim 4</li>
-        <li>Victim 5</li>
-        <li>Victim 6</li>
+        <li *ngFor="let victima of victimas.victimas">
+          {{ victima.nombre }} - {{ victima.estado }}
+        </li>
       </ul>
     </div>    
   </div>
+</div>
     
 </ion-content>

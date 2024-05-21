@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-tab3',
@@ -6,7 +8,14 @@ import { Component } from '@angular/core';
   styleUrls: ['tab3.page.scss']
 })
 export class Tab3Page {
+  victimas: any;
+  constructor(private http: HttpClient) { }
 
-  constructor() {}
+  ngOnInit() {
+    this.http.get('../../assets/victimas.json').subscribe(data => {
+      this.victimas = data;
+      console.log(this.victimas)
+    });
+}
 
 }
