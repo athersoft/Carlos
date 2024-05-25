@@ -5,32 +5,5 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">LoginPage</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div class="global-content">
-    <h1>Log in with and existing account</h1>
-    Enter you email and password to log in
-    
-    <div class = "input_container">
-      <form name="loginValidation" id="loginValidation" action="index.html">
-        <div class="input-row">
-          <input type="email" name="email" id="email" placeholder="e-mail: example@domain.com" required>    
-        </div>
-        <div class="input-row">
-          <input type="password" name="password" id="password" placeholder="Password" required>    
-        </div>
-
-          <button type="submit" id = "signup">Log in</button>
-
-      </form>
-    </div>
-
-    <a href="signup.html">
-      <button id = "login">Create an account</button>
-    </a>
-</div>    
+  <ion-button [routerLink]="['/signup-page']">I don't have an account</ion-button>
 </ion-content>
