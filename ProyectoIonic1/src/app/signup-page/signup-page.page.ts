@@ -1,5 +1,5 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
-import {FormBuilder,FormGroup, Validators} from '@angular/forms';
+import { FormBuilder,FormGroup, Validators } from '@angular/forms';
 // import { AutenticacionService } from '../../services/autenticacion.service';
 
 @Component({
@@ -22,11 +22,11 @@ export class SignupPagePage implements OnInit
   {
     this.signupForm=this.form.group
     ({
-      email: ['', Validators.required, Validators.email],
-      user: ['',[Validators.required, Validators.email]],
-      password: ['',Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      user: ['',[Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
+      password: ['',[Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
       rut: ['', [Validators.pattern("[0-9]-"),Validators.max(9)]],
-      region: ['', [Validators.pattern("[0-16]-"),Validators.max(16)]]
+      region: ['', [Validators.pattern("[0-16]-"),Validators.maxLength(50)]]
     });
   }
 
