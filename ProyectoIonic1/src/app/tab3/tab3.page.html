@@ -17,15 +17,15 @@
   <app-explore-container name="Victims List page"></app-explore-container>
   
   <div *ngIf="victimas">
-  <div class="global-content">
-    <div class="victims-list-container">
-      <ul>
-        <li *ngFor="let victima of victimas.victimas">
-          {{ victima.nombre }} - {{ victima.estado }}
-        </li>
-      </ul>
-    </div>    
+    <div class="global-content">
+      <div class="victims-list-container">
+        <ul>
+          <li *ngFor="let victima of victimas.victimas">
+            {{ victima.nombre }} - {{ victima.estado }}
+          </li>
+        </ul>
+      </div>    
+    </div>
   </div>
-</div>
     
 </ion-content>

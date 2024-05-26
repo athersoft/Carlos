@@ -5,9 +5,18 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
-  },  {
+  },
+  {
     path: 'login-page',
     loadChildren: () => import('./login-page/login-page.module').then( m => m.LoginPagePageModule)
+  },
+  {
+    path: 'signup-page',
+    loadChildren: () => import('./signup-page/signup-page.module').then( m => m.SignupPagePageModule)
+  },
+  {
+    path: 'title-page',
+    loadChildren: () => import('./title-page/title-page.module').then( m => m.TitlePagePageModule)
   }
 
 ];
