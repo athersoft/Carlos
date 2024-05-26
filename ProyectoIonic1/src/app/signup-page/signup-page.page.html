@@ -8,16 +8,24 @@
   <ion-button [routerLink]="['/login-page']">Already have an account</ion-button>
 
   <form [formGroup]="signupForm" (ngSubmit)="LoginValidation()">
-    <div class="input-row">
+    <div class="form-group">
       <input type="text" name="name" id="name" placeholder="Full Name" required>    
     </div>
-    <div class="input-row">
+    <div class="form-group">
       <input type="text" name="run" id="run" placeholder="R.U.N.: 12345678-9" required>
     </div>
-    <div class="input-row">
-      <input type="email" name="email" id="email" placeholder="e-mail: example@domain.com" required>    
+
+    <div class="form-group">
+      <input type="email" name="email" id="email" placeholder="e-mail: example@domain.com" required>
+      <div *ngIf="signupForm.get('email')?.errors && signupForm.get('email')?.hasError('required') && signupForm.touched">
+        <div class="alert alert-danger" role="alert">
+          * Correo obligatoriooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+        </div>
+      </div>
     </div>
-    <div class="input-row">
+    
+    <div>a</div>
+    <div class="form-group">
       <input type="password" name="password" id="password" placeholder="Password" required>    
     </div>
     <div class="input-row">
