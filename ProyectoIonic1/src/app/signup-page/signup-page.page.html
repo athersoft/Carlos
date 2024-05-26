@@ -8,33 +8,67 @@
   <ion-button [routerLink]="['/login-page']">Already have an account</ion-button>
 
   <form [formGroup]="signupForm" (ngSubmit)="LoginValidation()">
-    <div class="form-group">
-      <input type="text" name="name" id="name" placeholder="Full Name" required>    
-    </div>
-    <div class="form-group">
-      <input type="text" name="run" id="run" placeholder="R.U.N.: 12345678-9" required>
-    </div>
 
-    <div class="form-group">
-      <ion-input 
-        type="email" 
-        formControlName="email" 
-        placeholder="e-mail: example@domain.com" 
-        [errorText]="formError('email')"
-        required>
-      <div>
-        aaaaaaaaaaaaaaaaaaaaaaaaaaa
+    <ion-item lines="none">
+      <div class="form-group">
+        <ion-input
+          type="text"
+          formControlName="user"
+          placeholder="Full Name"
+          [errorText]="formError('user')"
+          required>
+        </ion-input>
       </div>
-      </ion-input>
-    </div>
+    </ion-item>
+
+    <ion-item lines="none">
+        <div class="form-group">
+          <ion-input
+            type="text"
+            formControlName="rut"
+            placeholder="R.U.N.: 12345678-9"
+            [errorText]="formError('rut')"
+            required>
+        </ion-input>
+      </div>
+    </ion-item>
+
+    <ion-item lines="none">
+      <div class="form-group">
+        <ion-input
+          type="email"
+          formControlName="email"
+          placeholder="e-mail: example@domain.com"
+          [errorText]="formError('email')"
+          required>
+        </ion-input>
+      </div>
+    </ion-item>
     
-    <div>a</div>
-    <div class="form-group">
-      <input type="password" name="password" id="password" placeholder="Password" required>    
-    </div>
-    <div class="input-row">
-      <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm password" required>    
-    </div>
+    <ion-item lines="none">
+      <div class="form-group">
+        <ion-input
+          type="password"
+          formControlName="password"
+          placeholder="Password"
+          [errorText]="formError('password')"
+          required>    
+        </ion-input>
+      </div>
+    </ion-item>
+
+    <ion-item lines="none">
+      <div class="form-group">
+        <ion-input
+          type="passwordConfirm"
+          formControlName="passwordConfirm"
+          placeholder="Confirm Password"
+          [errorText]="formError('passwordConfirm')"
+          required>    
+        </ion-input>
+      </div>
+    </ion-item>
+
     <div class="input-row">
       <select #regionDropdown name="region" id="region">
         <option value="0" disabled selected>Región</option>
@@ -58,6 +92,7 @@
     </div>
 
     <!-- the comuna incident -->
+    <!-- cambiar por el json cuando se pueda-->
     <div class="input-row" (click)="getRegionSelected()">
       <select name="comuna" id="comuna">
         <option value="0" disabled selected> Comuna </option>
