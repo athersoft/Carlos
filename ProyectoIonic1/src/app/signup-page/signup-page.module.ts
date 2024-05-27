@@ -12,9 +12,9 @@ import { SignupPagePage } from './signup-page.page';
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule,
     IonicModule,
     SignupPagePageRoutingModule,
+    FormsModule,
     ReactiveFormsModule
   ],
   declarations: [SignupPagePage]

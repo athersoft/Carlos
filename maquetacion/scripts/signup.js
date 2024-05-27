@@ -262,7 +262,6 @@ $(document).ready(() => {
             $("#comuna").append('<option value="31">Tucapel</option>');
             $("#comuna").append('<option value="32">Yumbel</option>');
             $("#comuna").append('<option value="33">Alto Biobío</option>');
-            
         }
         else if (ind === "9") {
             $("#comuna").append('<option value="1">Temuco</option>');

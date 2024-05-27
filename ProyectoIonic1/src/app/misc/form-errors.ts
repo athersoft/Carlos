@@ -1,19 +1,18 @@
 const errorMsg =  {
-    required: 'Field required.',
-    requiredTrue: 'Field required.',
-    email: 'Invalid email.',
-    minlength: 'Mínimo de caracteres no alcanzado',
-    maxlength: 'Máximo de caracteres excedido',
-    pattern: 'Formato inválido',
-    rutDv: 'Dígito verificador inválido',
-    rutFormat: 'Formato de RUT inválido (sin puntos, con guión)',
-    region: 'Región no seleccionada',
-    comuna: 'Comuna no seleccionada',
-    tyc: 'Debe aceptar los términos y condiciones',
-    password: 'Contraseña inválida',
-    passwordConfirm: 'Las contraseñas no coinciden',
+    required: 'This field required.',
+    requiredTrue: 'This field required.',
+    email: 'The email entered is invalid.',
+    minlength: 'You have not reached the minimum limit of characters.',
+    maxlength: 'You have exceded the maximum limit of characters.',
+    pattern: 'The format used is invalid.',
+    runDv: 'You must enter a valid RUN.',
+    runFormat: 'The RUN must be written without dots and with a hyphen.',
+    region: 'You must select a region.',
+    comuna: 'You must select a commune.',
+    tyc: 'You must accept our terms and conditions.',
+    password: 'The password must be at least 6 characters long and only include letters and numbers.',
+    passwordConfirm: 'The passwords do not match.',
 }
-// revisar para las cosas de la cosa de la cosa
 
 type FormError = keyof typeof errorMsg;
 

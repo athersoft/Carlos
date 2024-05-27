@@ -12,7 +12,7 @@ export class Tab3Page {
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    this.http.get('../../assets/victimas.json').subscribe(data => {
+    this.http.get('../../assets/json/victimas.json').subscribe(data => {
       this.victimas = data;
       console.log(this.victimas)
     });

@@ -5,7 +5,9 @@
     </ion-title>
   </ion-toolbar>
   
-  <ion-button color="dark" [routerLink]="['/title-page']">Title</ion-button>
+  <ion-button aria-label="Log Out" color="dark" [routerLink]="['/title-page']">
+    <ion-icon name="log-out-outline" aria-hidden="true"></ion-icon>
+  </ion-button>
 </ion-header>
 
 <ion-content [fullscreen]="true">
