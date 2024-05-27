@@ -23,7 +23,6 @@ export class SignupPagePage implements OnInit
 {
   @ViewChild('regionDropdown', { static: false }) regionDropdown?: ElementRef;
   
-  
   signupForm: FormGroup;
   message:string="";
   loggedIn=false;
