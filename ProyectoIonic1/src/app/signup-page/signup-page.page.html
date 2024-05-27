@@ -8,416 +8,127 @@
   <div class = "centro">
   <ion-button [routerLink]="['/login-page']">Already have an account</ion-button>
 
-  <form [formGroup]="signupForm" (ngSubmit)="LoginValidation()">
-    <div class="form-group">
-      <input type="text" name="name" id="name" placeholder="Full Name" required>    
-    </div>
-    <div class="form-group">
-      <input type="text" name="run" id="run" placeholder="R.U.N.: 12345678-9" required>
-    </div>
+  <form [formGroup]="signupForm" (ngSubmit)="SignupValidation()">
 
-    <div class="form-group">
-      <input type="email" name="email" id="email" placeholder="e-mail: example@domain.com" required>
-      <div *ngIf="signupForm.get('email')?.errors && signupForm.get('email')?.hasError('required') && signupForm.touched">
-        <div class="alert alert-danger" role="alert">
-          * Correo obligatoriooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
-        </div>
-      </div>
-    </div>
+    <ion-item lines="none">
+      <ion-input
+        type="text"
+        formControlName="name"
+        placeholder="Name Surname"
+        label="Full Name"
+        labelPlacement="stacked"
+        [errorText]="formError('name')"
+        required
+        >
+      </ion-input>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-input
+        type="text"
+        formControlName="run"
+        placeholder="12345678-9"
+        label="R.U.N."
+        labelPlacement="stacked"
+        [errorText]="formError('run')"
+        required
+        >
+      </ion-input>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-input
+        type="email"
+        formControlName="email"
+        placeholder="example@domain.com"
+        label="E-mail"
+        labelPlacement="stacked"
+        [errorText]="formError('email')"
+        required
+        >
+      </ion-input>
+    </ion-item>
     
-    <div>a</div>
-    <div class="form-group">
-      <input type="password" name="password" id="password" placeholder="Password" required>    
-    </div>
-    <div class="input-row">
-      <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm password" required>    
-    </div>
-    <div class="input-row">
-      <select #regionDropdown name="region" id="region">
-        <option value="0" disabled selected>Región</option>
-        <option value="15">Región de Arica y Parinacota</option>
-        <option value="1">Región de Tarapacá</option>
-        <option value="2">Región de Antofagasta</option>
-        <option value="3">Región de Atacama</option>
-        <option value="4">Región de Coquimbo</option>
-        <option value="5">Región de Valparaíso</option>
-        <option value="13">Región Metropolitana de Santiago</option>
-        <option value="6">Región del Libertador General Bernardo O'Higgins</option>
-        <option value="7">Región del Maule</option>
-        <option value="16">Región de Ñuble</option>
-        <option value="8">Región del Biobío</option>
-        <option value="9">Región de La Araucanía</option>
-        <option value="14">Región de Los Ríos</option>
-        <option value="10">Región de Los Lagos</option>
-        <option value="11">Región de Aysén del General Carlos Ibáñez del Campo</option>
-        <option value="12">Región de Magallanes y de la Antártica Chilena</option>
-      </select>
-    </div>
+    <ion-item lines="none">
+      <ion-input
+        type="password"
+        formControlName="password"
+        placeholder="pAsSwoRD123"
+        label="Password"
+        labelPlacement="stacked"
+        [errorText]="formError('password')"
+        required
+        >    
+      </ion-input>
+    </ion-item>
 
-    <!-- the comuna incident -->
-    <div class="input-row" (click)="getRegionSelected()">
-      <select name="comuna" id="comuna">
-        <option value="0" disabled selected> Comuna </option>
-        <option *ngIf="regionSelected == 15" value="1">Arica</option>
-        <option *ngIf="regionSelected == 15" value="2">Camarones</option>
-        <option *ngIf="regionSelected == 15" value="3">Putre</option>
-        <option *ngIf="regionSelected == 15" value="4">General Lagos</option>
-        <option *ngIf="regionSelected == 1" value="1">Iquique</option>
-        <option *ngIf="regionSelected == 1" value="2">Alto Hospicio</option>
-        <option *ngIf="regionSelected == 1" value="3">Pozo Almonte</option>
-        <option *ngIf="regionSelected == 1" value="4">Camiña</option>
-        <option *ngIf="regionSelected == 1" value="5">Colchane</option>
-        <option *ngIf="regionSelected == 1" value="6">Huara</option>
-        <option *ngIf="regionSelected == 1" value="7">Pica</option>
-        <option *ngIf="regionSelected == 2" value="1">Antofagasta</option>
-        <option *ngIf="regionSelected == 2" value="2">Mejillones</option>
-        <option *ngIf="regionSelected == 2" value="3">Sierra Gorda</option>
-        <option *ngIf="regionSelected == 2" value="4">Taltal</option>
-        <option *ngIf="regionSelected == 2" value="5">Calama</option>
-        <option *ngIf="regionSelected == 2" value="6">Ollagüe</option>
-        <option *ngIf="regionSelected == 2" value="7">San Pedro de Atacama</option>
-        <option *ngIf="regionSelected == 2" value="8">Tocopilla</option>
-        <option *ngIf="regionSelected == 2" value="9">María Elena</option>
-        <option *ngIf="regionSelected == 3" value="1">Copiapó</option>
-        <option *ngIf="regionSelected == 3" value="2">Caldera</option>
-        <option *ngIf="regionSelected == 3" value="3">Tierra Amarilla</option>
-        <option *ngIf="regionSelected == 3" value="4">Chañaral</option>
-        <option *ngIf="regionSelected == 3" value="5">Diego de Almagro</option>
-        <option *ngIf="regionSelected == 3" value="6">Vallenar</option>
-        <option *ngIf="regionSelected == 3" value="7">Alto del Carmen</option>
-        <option *ngIf="regionSelected == 3" value="8">Freirina</option>
-        <option *ngIf="regionSelected == 3" value="9">Huasco</option>
-        <option *ngIf="regionSelected == 4" value="1">La Serena</option>
-        <option *ngIf="regionSelected == 4" value="2">Coquimbo</option>
-        <option *ngIf="regionSelected == 4" value="3">Andacollo</option>
-        <option *ngIf="regionSelected == 4" value="4">La Higuera</option>
-        <option *ngIf="regionSelected == 4" value="5">Paihuano</option>
-        <option *ngIf="regionSelected == 4" value="6">Vicuña</option>
-        <option *ngIf="regionSelected == 4" value="7">Illapel</option>
-        <option *ngIf="regionSelected == 4" value="8">Canela</option>
-        <option *ngIf="regionSelected == 4" value="9">Los Vilos</option>
-        <option *ngIf="regionSelected == 4" value="10">Salamanca</option>
-        <option *ngIf="regionSelected == 4" value="11">Ovalle</option>
-        <option *ngIf="regionSelected == 4" value="12">Combarbalá</option>
-        <option *ngIf="regionSelected == 4" value="13">Monte Patria</option>
-        <option *ngIf="regionSelected == 4" value="14">Punitaqui</option>
-        <option *ngIf="regionSelected == 4" value="15">Río Hurtado</option>
-        <option *ngIf="regionSelected == 5" value="1">Valparaíso</option>
-        <option *ngIf="regionSelected == 5" value="2">Casablanca</option>
-        <option *ngIf="regionSelected == 5" value="3">Concón</option>
-        <option *ngIf="regionSelected == 5" value="4">Juan Fernández</option>
-        <option *ngIf="regionSelected == 5" value="5">Puchuncaví</option>
-        <option *ngIf="regionSelected == 5" value="6">Quintero</option>
-        <option *ngIf="regionSelected == 5" value="7">Viña del Mar</option>
-        <option *ngIf="regionSelected == 5" value="8">Isla de Pascua</option>
-        <option *ngIf="regionSelected == 5" value="9">Los Andes</option>
-        <option *ngIf="regionSelected == 5" value="10">Calle Larga</option>
-        <option *ngIf="regionSelected == 5" value="11">Rinconada</option>
-        <option *ngIf="regionSelected == 5" value="12">San Esteban</option>
-        <option *ngIf="regionSelected == 5" value="13">La Ligua</option>
-        <option *ngIf="regionSelected == 5" value="14">Cabildo</option>
-        <option *ngIf="regionSelected == 5" value="15">Papudo</option>
-        <option *ngIf="regionSelected == 5" value="16">Petorca</option>
-        <option *ngIf="regionSelected == 5" value="17">Zapallar</option>
-        <option *ngIf="regionSelected == 5" value="18">Quillota</option>
-        <option *ngIf="regionSelected == 5" value="19">La Calera</option>
-        <option *ngIf="regionSelected == 5" value="20">Hijuelas</option>
-        <option *ngIf="regionSelected == 5" value="21">La Cruz</option>
-        <option *ngIf="regionSelected == 5" value="22">Nogales</option>
-        <option *ngIf="regionSelected == 5" value="23">San Antonio</option>
-        <option *ngIf="regionSelected == 5" value="24">Algarrobo</option>
-        <option *ngIf="regionSelected == 5" value="25">Cartagena</option>
-        <option *ngIf="regionSelected == 5" value="26">El Quisco</option>
-        <option *ngIf="regionSelected == 5" value="27">El Tabo</option>
-        <option *ngIf="regionSelected == 5" value="28">Santo Domingo</option>
-        <option *ngIf="regionSelected == 5" value="29">San Felipe</option>
-        <option *ngIf="regionSelected == 5" value="30">Catemu</option>
-        <option *ngIf="regionSelected == 5" value="31">Llay-Lllay</option>
-        <option *ngIf="regionSelected == 5" value="32">Panquehue</option>
-        <option *ngIf="regionSelected == 5" value="33">Putaendo</option>
-        <option *ngIf="regionSelected == 5" value="34">Santa María</option>
-        <option *ngIf="regionSelected == 5" value="35">Quilpué</option>
-        <option *ngIf="regionSelected == 5" value="36">Limache</option>
-        <option *ngIf="regionSelected == 5" value="37">Olmué</option>
-        <option *ngIf="regionSelected == 5" value="38">Villa Alemana</option>
-        <option *ngIf="regionSelected == 6" value="1">Rancagua</option>
-        <option *ngIf="regionSelected == 6" value="2">Codegua</option>
-        <option *ngIf="regionSelected == 6" value="3">Coinco</option>
-        <option *ngIf="regionSelected == 6" value="4">Coltauco</option>
-        <option *ngIf="regionSelected == 6" value="5">Doñihue</option>
-        <option *ngIf="regionSelected == 6" value="6">Graneros</option>
-        <option *ngIf="regionSelected == 6" value="7">Las Cabras</option>
-        <option *ngIf="regionSelected == 6" value="8">Machalí</option>
-        <option *ngIf="regionSelected == 6" value="9">Malloa</option>
-        <option *ngIf="regionSelected == 6" value="10">Mostazal</option>
-        <option *ngIf="regionSelected == 6" value="11">Olivar</option>
-        <option *ngIf="regionSelected == 6" value="12">Peumo</option>
-        <option *ngIf="regionSelected == 6" value="13">Pichidegua</option>
-        <option *ngIf="regionSelected == 6" value="14">Quinta de Tilcoco</option>
-        <option *ngIf="regionSelected == 6" value="15">Rengo</option>
-        <option *ngIf="regionSelected == 6" value="16">Requínoa</option>
-        <option *ngIf="regionSelected == 6" value="17">San Vicente</option>
-        <option *ngIf="regionSelected == 6" value="18">Pichilemu</option>
-        <option *ngIf="regionSelected == 6" value="19">La Estrella</option>
-        <option *ngIf="regionSelected == 6" value="20">Litueche</option>
-        <option *ngIf="regionSelected == 6" value="21">Marchigüe</option>
-        <option *ngIf="regionSelected == 6" value="22">Navidad</option>
-        <option *ngIf="regionSelected == 6" value="23">Paredones</option>
-        <option *ngIf="regionSelected == 6" value="24">San Fernando</option>
-        <option *ngIf="regionSelected == 6" value="25">Chépica</option>
-        <option *ngIf="regionSelected == 6" value="26">Chimbarongo</option>
-        <option *ngIf="regionSelected == 6" value="27">Lolol</option>
-        <option *ngIf="regionSelected == 6" value="28">Nancagua</option>
-        <option *ngIf="regionSelected == 6" value="29">Palmilla</option>
-        <option *ngIf="regionSelected == 6" value="30">Peralillo</option>
-        <option *ngIf="regionSelected == 6" value="31">Placilla</option>
-        <option *ngIf="regionSelected == 6" value="32">Pumanque</option>
-        <option *ngIf="regionSelected == 6" value="33">Santa Cruz</option>
-        <option *ngIf="regionSelected == 7" value="1">Talca</option>
-        <option *ngIf="regionSelected == 7" value="2">Constitución</option>
-        <option *ngIf="regionSelected == 7" value="3">Curepto</option>
-        <option *ngIf="regionSelected == 7" value="4">Empedrado</option>
-        <option *ngIf="regionSelected == 7" value="5">Maule</option>
-        <option *ngIf="regionSelected == 7" value="6">Pelarco</option>
-        <option *ngIf="regionSelected == 7" value="7">Pencahue</option>
-        <option *ngIf="regionSelected == 7" value="8">Río Claro</option>
-        <option *ngIf="regionSelected == 7" value="9">San Clemente</option>
-        <option *ngIf="regionSelected == 7" value="10">San Rafael</option>
-        <option *ngIf="regionSelected == 7" value="11">Cauquenes</option>
-        <option *ngIf="regionSelected == 7" value="12">Chanco</option>
-        <option *ngIf="regionSelected == 7" value="13">Pelluhue</option>
-        <option *ngIf="regionSelected == 7" value="14">Curicó</option>
-        <option *ngIf="regionSelected == 7" value="15">Hualañé</option>
-        <option *ngIf="regionSelected == 7" value="16">Licantén</option>
-        <option *ngIf="regionSelected == 7" value="17">Molina</option>
-        <option *ngIf="regionSelected == 7" value="18">Rauco</option>
-        <option *ngIf="regionSelected == 7" value="19">Romeral</option>
-        <option *ngIf="regionSelected == 7" value="20">Sagrada Familia</option>
-        <option *ngIf="regionSelected == 7" value="21">Teno</option>
-        <option *ngIf="regionSelected == 7" value="22">Vichuquén</option>
-        <option *ngIf="regionSelected == 7" value="23">Linares</option>
-        <option *ngIf="regionSelected == 7" value="24">Colbún</option>
-        <option *ngIf="regionSelected == 7" value="25">Longaví</option>
-        <option *ngIf="regionSelected == 7" value="26">Parral</option>
-        <option *ngIf="regionSelected == 7" value="27">Retiro</option>
-        <option *ngIf="regionSelected == 7" value="28">San Javier</option>
-        <option *ngIf="regionSelected == 7" value="29">Villa Alegre</option>
-        <option *ngIf="regionSelected == 7" value="30">Yerbas Buenas</option>
-        <option *ngIf="regionSelected == 16" value="1">Chillán</option>
-        <option *ngIf="regionSelected == 16" value="2">Bulnes</option>
-        <option *ngIf="regionSelected == 16" value="3">Chillán Viejo</option>
-        <option *ngIf="regionSelected == 16" value="4">El Carmen</option>
-        <option *ngIf="regionSelected == 16" value="5">Pemuco</option>
-        <option *ngIf="regionSelected == 16" value="6">Pinto</option>
-        <option *ngIf="regionSelected == 16" value="7">Quillón</option>
-        <option *ngIf="regionSelected == 16" value="8">San Ignacio</option>
-        <option *ngIf="regionSelected == 16" value="9">Yungay</option>
-        <option *ngIf="regionSelected == 16" value="10">Quirihue</option>
-        <option *ngIf="regionSelected == 16" value="11">Cobquecura</option>
-        <option *ngIf="regionSelected == 16" value="12">Coelemu</option>
-        <option *ngIf="regionSelected == 16" value="13">Ninhue</option>
-        <option *ngIf="regionSelected == 16" value="14">Portezuelo</option>
-        <option *ngIf="regionSelected == 16" value="15">Ránquil</option>
-        <option *ngIf="regionSelected == 16" value="16">Treguaco</option>
-        <option *ngIf="regionSelected == 16" value="17">San Carlos</option>
-        <option *ngIf="regionSelected == 16" value="18">Coihueco</option>
-        <option *ngIf="regionSelected == 16" value="19">Ñiquén</option>
-        <option *ngIf="regionSelected == 16" value="20">San Fabián</option>
-        <option *ngIf="regionSelected == 16" value="21">San Nicolás</option>
-        <option *ngIf="regionSelected == 8" value="1">Concepción</option>
-        <option *ngIf="regionSelected == 8" value="2">Coronel</option>
-        <option *ngIf="regionSelected == 8" value="3">Chiguayante</option>
-        <option *ngIf="regionSelected == 8" value="4">Florida</option>
-        <option *ngIf="regionSelected == 8" value="5">Hualqui</option>
-        <option *ngIf="regionSelected == 8" value="6">Lota</option>
-        <option *ngIf="regionSelected == 8" value="7">Penco</option>
-        <option *ngIf="regionSelected == 8" value="8">San Pedro de La Paz</option>
-        <option *ngIf="regionSelected == 8" value="9">Santa Juana</option>
-        <option *ngIf="regionSelected == 8" value="10">Talcahuano</option>
-        <option *ngIf="regionSelected == 8" value="11">Tomé</option>
-        <option *ngIf="regionSelected == 8" value="12">Hualpén</option>
-        <option *ngIf="regionSelected == 8" value="13">Lebu</option>
-        <option *ngIf="regionSelected == 8" value="14">Arauco</option>
-        <option *ngIf="regionSelected == 8" value="15">Cañete</option>
-        <option *ngIf="regionSelected == 8" value="16">Contulmo</option>
-        <option *ngIf="regionSelected == 8" value="17">Curanilahue</option>
-        <option *ngIf="regionSelected == 8" value="18">Los Álamos</option>
-        <option *ngIf="regionSelected == 8" value="19">Tirúa</option>
-        <option *ngIf="regionSelected == 8" value="20">Los Ángeles</option>
-        <option *ngIf="regionSelected == 8" value="21">Antuco</option>
-        <option *ngIf="regionSelected == 8" value="22">Cabrero</option>
-        <option *ngIf="regionSelected == 8" value="23">Laja</option>
-        <option *ngIf="regionSelected == 8" value="24">Mulchén</option>
-        <option *ngIf="regionSelected == 8" value="25">Nacimiento</option>
-        <option *ngIf="regionSelected == 8" value="26">Negrete</option>
-        <option *ngIf="regionSelected == 8" value="27">Quilaco</option>
-        <option *ngIf="regionSelected == 8" value="28">Quilleco</option>
-        <option *ngIf="regionSelected == 8" value="29">San Rosendo</option>
-        <option *ngIf="regionSelected == 8" value="30">Santa Bárbara</option>
-        <option *ngIf="regionSelected == 8" value="31">Tucapel</option>
-        <option *ngIf="regionSelected == 8" value="32">Yumbel</option>
-        <option *ngIf="regionSelected == 8" value="33">Alto Biobío</option>
-        <option *ngIf="regionSelected == 9" value="1">Temuco</option>
-        <option *ngIf="regionSelected == 9" value="2">Carahue</option>
-        <option *ngIf="regionSelected == 9" value="3">Cunco</option>
-        <option *ngIf="regionSelected == 9" value="4">Curarrehue</option>
-        <option *ngIf="regionSelected == 9" value="5">Freire</option>
-        <option *ngIf="regionSelected == 9" value="6">Galbarino</option>
-        <option *ngIf="regionSelected == 9" value="7">Gorbea</option>
-        <option *ngIf="regionSelected == 9" value="8">Lautaro</option>
-        <option *ngIf="regionSelected == 9" value="9">Loncoche</option>
-        <option *ngIf="regionSelected == 9" value="10">Melipeuco</option>
-        <option *ngIf="regionSelected == 9" value="11">Nueva Imperial</option>
-        <option *ngIf="regionSelected == 9" value="12">Padre Las Casas</option>
-        <option *ngIf="regionSelected == 9" value="13">Perquenco</option>
-        <option *ngIf="regionSelected == 9" value="14">Pitrufquén</option>
-        <option *ngIf="regionSelected == 9" value="15">Pucón</option>
-        <option *ngIf="regionSelected == 9" value="16">Saavedra</option>
-        <option *ngIf="regionSelected == 9" value="17">Teodoro Schmidt</option>
-        <option *ngIf="regionSelected == 9" value="18">Toltén</option>
-        <option *ngIf="regionSelected == 9" value="19">Vilcún</option>
-        <option *ngIf="regionSelected == 9" value="20">Villarica</option>
-        <option *ngIf="regionSelected == 9" value="21">Cholcholl</option>
-        <option *ngIf="regionSelected == 9" value="22">Angol</option>
-        <option *ngIf="regionSelected == 9" value="23">Collipulli</option>
-        <option *ngIf="regionSelected == 9" value="24">Curacautín</option>
-        <option *ngIf="regionSelected == 9" value="25">Ercillla</option>
-        <option *ngIf="regionSelected == 9" value="26">Lonquimay</option>
-        <option *ngIf="regionSelected == 9" value="27">Los Sauces</option>
-        <option *ngIf="regionSelected == 9" value="28">Lumaco</option>
-        <option *ngIf="regionSelected == 9" value="29">Purén</option>
-        <option *ngIf="regionSelected == 9" value="30">Renaico</option>
-        <option *ngIf="regionSelected == 9" value="31">Traiguén</option>
-        <option *ngIf="regionSelected == 9" value="32">Victoria</option>
-        <option *ngIf="regionSelected == 14" value="1">Valdivia</option>
-        <option *ngIf="regionSelected == 14" value="2">Corral</option>
-        <option *ngIf="regionSelected == 14" value="3">Lanco</option>
-        <option *ngIf="regionSelected == 14" value="4">Los Lagos</option>
-        <option *ngIf="regionSelected == 14" value="5">Máfil</option>
-        <option *ngIf="regionSelected == 14" value="6">Mariquina</option>
-        <option *ngIf="regionSelected == 14" value="7">Pailllaco</option>
-        <option *ngIf="regionSelected == 14" value="8">Panguipulli</option>
-        <option *ngIf="regionSelected == 14" value="9">La Unión</option>
-        <option *ngIf="regionSelected == 14" value="10">Futrono</option>
-        <option *ngIf="regionSelected == 14" value="11">Lago Ranco</option>
-        <option *ngIf="regionSelected == 14" value="12">Río Bueno</option>            
-        <option *ngIf="regionSelected == 10" value="1">Puerto Montt</option>
-        <option *ngIf="regionSelected == 10" value="2">Calbuco</option>
-        <option *ngIf="regionSelected == 10" value="3">Cochamó</option>
-        <option *ngIf="regionSelected == 10" value="4">Fresia</option>
-        <option *ngIf="regionSelected == 10" value="5">Frrunillar</option>
-        <option *ngIf="regionSelected == 10" value="6">Los Muermos</option>
-        <option *ngIf="regionSelected == 10" value="7">Llanquihue</option>
-        <option *ngIf="regionSelected == 10" value="8">Maullín</option>
-        <option *ngIf="regionSelected == 10" value="9">Puerto Varas</option>
-        <option *ngIf="regionSelected == 10" value="10">Castro</option>
-        <option *ngIf="regionSelected == 10" value="11">Ancud</option>
-        <option *ngIf="regionSelected == 10" value="12">Chonchi</option>
-        <option *ngIf="regionSelected == 10" value="13">Curaco de Vélez</option>
-        <option *ngIf="regionSelected == 10" value="14">Dalcahue</option>
-        <option *ngIf="regionSelected == 10" value="15">Puqueldón</option>
-        <option *ngIf="regionSelected == 10" value="16">Queilén</option>
-        <option *ngIf="regionSelected == 10" value="17">Quellón</option>
-        <option *ngIf="regionSelected == 10" value="18">Quemchi</option>
-        <option *ngIf="regionSelected == 10" value="19">Quinchao</option>
-        <option *ngIf="regionSelected == 10" value="20">Osorno</option>
-        <option *ngIf="regionSelected == 10" value="21">Puerto Octay</option>
-        <option *ngIf="regionSelected == 10" value="22">Purranque</option>
-        <option *ngIf="regionSelected == 10" value="23">Puyehue</option>
-        <option *ngIf="regionSelected == 10" value="24">Río Negro</option>
-        <option *ngIf="regionSelected == 10" value="25">San Juan de la Costa</option>
-        <option *ngIf="regionSelected == 10" value="26">San Pablo</option>
-        <option *ngIf="regionSelected == 10" value="27">Chaitén</option>
-        <option *ngIf="regionSelected == 10" value="28">Futaleufú</option>
-        <option *ngIf="regionSelected == 10" value="29">Hualaihué</option>
-        <option *ngIf="regionSelected == 10" value="30">Palena</option>            
-        <option *ngIf="regionSelected == 11" value="1">Coyhaique</option>
-        <option *ngIf="regionSelected == 11" value="2">Lago Verde</option>
-        <option *ngIf="regionSelected == 11" value="3">Aysén</option>
-        <option *ngIf="regionSelected == 11" value="4">Cisnes</option>
-        <option *ngIf="regionSelected == 11" value="5">Guaitecas</option>
-        <option *ngIf="regionSelected == 11" value="6">Cochrane</option>
-        <option *ngIf="regionSelected == 11" value='7'>O'Higgins</option>");
-        <option *ngIf="regionSelected == 11" value="8">Tortel</option>
-        <option *ngIf="regionSelected == 11" value="9">Chile Chico</option>
-        <option *ngIf="regionSelected == 11" value="10">Río Ibáñez</option>
-        <option *ngIf="regionSelected == 12" value="1">Punta Arenas</option>
-        <option *ngIf="regionSelected == 12" value="2">Laguna Blanca</option>
-        <option *ngIf="regionSelected == 12" value="3">Río Verde</option>
-        <option *ngIf="regionSelected == 12" value="4">San Gregorio</option>
-        <option *ngIf="regionSelected == 12" value="5">Cabo de Hornos</option>
-        <option *ngIf="regionSelected == 12" value="6">Antártica</option>
-        <option *ngIf="regionSelected == 12" value="7">Porvenir</option>
-        <option *ngIf="regionSelected == 12" value="8">Primavera</option>
-        <option *ngIf="regionSelected == 12" value="9">Timaukel</option>
-        <option *ngIf="regionSelected == 12" value="10">Natales</option>
-        <option *ngIf="regionSelected == 12" value="11">Torres del Paine</option>
-        <option *ngIf="regionSelected == 13" value="1">Santiago</option>
-        <option *ngIf="regionSelected == 13" value="2">Cerrillos</option>
-        <option *ngIf="regionSelected == 13" value="3">Cerro Navia</option>
-        <option *ngIf="regionSelected == 13" value="4">Conchalí</option>
-        <option *ngIf="regionSelected == 13" value="5">El Bosque</option>
-        <option *ngIf="regionSelected == 13" value="6">Estación Central</option>
-        <option *ngIf="regionSelected == 13" value="7">Huechuraba</option>
-        <option *ngIf="regionSelected == 13" value="8">Independencia</option>
-        <option *ngIf="regionSelected == 13" value="9">La Cisterna</option>
-        <option *ngIf="regionSelected == 13" value="10">La Florida</option>
-        <option *ngIf="regionSelected == 13" value="11">La Granja</option>
-        <option *ngIf="regionSelected == 13" value="12">La Pintana</option>
-        <option *ngIf="regionSelected == 13" value="13">La Reina</option>
-        <option *ngIf="regionSelected == 13" value="14">Las Condes</option>
-        <option *ngIf="regionSelected == 13" value="15">Lo Barnechea</option>
-        <option *ngIf="regionSelected == 13" value="16">Lo Espejo</option>
-        <option *ngIf="regionSelected == 13" value="17">Lo Prado</option>
-        <option *ngIf="regionSelected == 13" value="18">Macul</option>
-        <option *ngIf="regionSelected == 13" value="19">Maipú</option>
-        <option *ngIf="regionSelected == 13" value="20">Ñuñoa</option>
-        <option *ngIf="regionSelected == 13" value="21">Pedro Aguirre Cerda</option>
-        <option *ngIf="regionSelected == 13" value="22">Peñalolén</option>
-        <option *ngIf="regionSelected == 13" value="23">Providencia</option>
-        <option *ngIf="regionSelected == 13" value="24">Pudahuel</option>
-        <option *ngIf="regionSelected == 13" value="25">Quilicura</option>
-        <option *ngIf="regionSelected == 13" value="26">Quinta Normal</option>
-        <option *ngIf="regionSelected == 13" value="27">Recoleta</option>
-        <option *ngIf="regionSelected == 13" value="28">Renca</option>
-        <option *ngIf="regionSelected == 13" value="29">San Joaquín</option>
-        <option *ngIf="regionSelected == 13" value="30">San Miguel</option>
-        <option *ngIf="regionSelected == 13" value="31">San Ramón</option>
-        <option *ngIf="regionSelected == 13" value="32">Vitacura</option>
-        <option *ngIf="regionSelected == 13" value="33">Puente Alto</option>
-        <option *ngIf="regionSelected == 13" value="34">Pirque</option>
-        <option *ngIf="regionSelected == 13" value="35">San José de Maipo</option>
-        <option *ngIf="regionSelected == 13" value="36">Colina</option>
-        <option *ngIf="regionSelected == 13" value="37">Lampa</option>
-        <option *ngIf="regionSelected == 13" value="38">Til Til</option>
-        <option *ngIf="regionSelected == 13" value="39">San Bernardo</option>
-        <option *ngIf="regionSelected == 13" value="40">Buin</option>
-        <option *ngIf="regionSelected == 13" value="41">Calera de Tango</option>
-        <option *ngIf="regionSelected == 13" value="42">Paine</option>
-        <option *ngIf="regionSelected == 13" value="43">Melipilla</option>
-        <option *ngIf="regionSelected == 13" value="44">Alhué</option>
-        <option *ngIf="regionSelected == 13" value="45">Curacaví</option>
-        <option *ngIf="regionSelected == 13" value="46">María Pinto</option>
-        <option *ngIf="regionSelected == 13" value="47">San Pedro</option>
-        <option *ngIf="regionSelected == 13" value="48">Talagante</option>
-        <option *ngIf="regionSelected == 13" value="49">El Monte</option>
-        <option *ngIf="regionSelected == 13" value="50">Isla de Maipo</option>
-        <option *ngIf="regionSelected == 13" value="51">Padre Hurtado</option>
-        <option *ngIf="regionSelected == 13" value="52">Peñaflor</option>
-      </select>
-    </div>
+    <ion-item lines="none">
+      <ion-input
+        type="passwordConfirm"
+        formControlName="passwordConfirm"
+        placeholder="Repeat your password"
+        label="Confirm Password"
+        labelPlacement="stacked"
+        [errorText]="formError('passwordConfirm')"
+        required
+        >    
+      </ion-input>
+    </ion-item>
 
-    <br>
-    <div class="tyc">
-      <label for="tyc">
+    <ion-item lines="full">
+      <ion-select
+        formControlName="region"
+        interface="action-sheet"
+        labelPlacement="stacked"
+        (ionChange)="onRegionChange()"
+      >
+        <div slot="label">
+          Region
+        </div>
+  
+        <ion-select-option
+          *ngFor="let region of regiones"
+          [value]="region.numero">
+          {{region.nombre}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-select
+        formControlName="comuna"
+        interface="action-sheet"
+        labelPlacement="stacked"
+      >
+      <div slot="label">
+        Commune
+      </div>
+        <ion-select-option
+          *ngFor="let comuna of comunas"
+          [value]="comuna"
+        >
+          {{comuna}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item class="ion-margin-vertical" lines="none">
+      <ion-toggle formControlName="tyc" labelPlacement="start" color="success">
         I accept the terms and conditions that apply
-      </label>
-      <input type="checkbox" name="tyc" id="tyc">
-    </div>
-    <div>
-      <br>
-      <button type="submit" id = "signup">Sign up</button>
-    </div>
+      </ion-toggle>
+    </ion-item>
+
+    <ion-button
+      type="submit"
+      expand="full"
+      class="button-highlighted"
+      [color]="btnColor"
+      [disabled]="!signupForm.valid"
+      
+      >
+      {{btnText}}
+    </ion-button>
+
   </form>
 </div>
 </ion-content>
