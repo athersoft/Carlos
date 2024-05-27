@@ -3,4 +3,39 @@
     align-items: center;
     align-content: center;
     display: flex;
+    padding: 20px;
+    border-radius: 10px;
 }
+
+ion-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/*
+ion-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-color: #f9f9f9; /* Cambia el color de fondo si es necesario */
+  /*  
+    .victims-list-container {
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    /*  
+      ul {
+        list-style: none;
+        padding: 0;
+        
+        li {
+          margin-bottom: 10px;
+          
+          /* Estilos adicionales para cada elemento de la lista si es necesario */
+        //}
+      //}
+    //}
+  //}
+  
+  

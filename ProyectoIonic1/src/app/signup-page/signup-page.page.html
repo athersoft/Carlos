@@ -4,7 +4,8 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class = "contenido">
+  <div class = "centro">
   <ion-button [routerLink]="['/login-page']">Already have an account</ion-button>
 
   <form [formGroup]="signupForm" (ngSubmit)="LoginValidation()">
@@ -418,5 +419,5 @@
       <button type="submit" id = "signup">Sign up</button>
     </div>
   </form>
-
+</div>
 </ion-content>
