@@ -22,6 +22,12 @@
     <div class="global-content">
       <div class="victims-list-container">
         <ul>
+                         
+          
+          <div [innerHTML]="'<ul><button>Edit     </button>  <button>+</button><ul>'"></div>
+
+      </ul>
+        <ul>
           <li *ngFor="let victima of victimas.victimas">
             {{ victima.nombre }} - {{ victima.estado }}
           </li>
