@@ -19,6 +19,13 @@
 
 > La aplicación es un software que permite conectarse al robot "Carlos". La aplicación muestra la lista de víctimas que Carlos encuentra en su camino, el estado de Carlos, y permite ver lo que Carlos está viendo mientras explora.
 
+### Patrones de diseño utilizados
+- Tab Bar
+- Flat Design
+- Humanización de Mensajes
+- Lenguaje Simple
+- Uso de colores para facilitar la navegación del usuario
+
 ### Funcionalidades
 
 > - Cámara en vivo de los ojos de Carlos.
