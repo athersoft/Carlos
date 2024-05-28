@@ -2,7 +2,7 @@ import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
 function validaDV(rut: string) {
   // Se separa el número del dígito verificador
-  const [numero, dv] = rut.replace('-K', '-k').split('-');
+  const [numero, dv] = rut.toLowerCase().split('-');
 
   // Aquí se debe aplicar módulo 11. La función se extrajo de:
   // https://validarutchile.cl/calcular-rut-en-javascript.php
@@ -48,5 +48,5 @@ export const rutValidator: ValidatorFn = (
   }
   const dvValid = validaDV(rut);
   const formatValid = /^[0-9]{7,8}-[0-9Kk]{1}$/.test(rut);
-  return formatValid ? (dvValid ? null : { rutDv: true }) : { rutFormat: true };
+  return formatValid ? (dvValid ? null : { runDv: true }) : { runFormat: true };
 };

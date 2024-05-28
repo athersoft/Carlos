@@ -17,7 +17,7 @@ interface RegionesJSON {
 })
 export class RegionesService {
 
-  private readonly jsonUrl = 'assets/json/regiones-comunas.json';
+  private readonly jsonUrl = 'assets/json/regionesYcomunas.json';
 
   constructor(private http: HttpClient) {}
 
