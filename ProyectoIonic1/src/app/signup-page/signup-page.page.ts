@@ -38,8 +38,8 @@ export class SignupPagePage implements OnInit
     ({
       name: ['',[Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
       run: ['', [Validators.required, rutValidator]],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['',[Validators.required, Validators.minLength(6), Validators.maxLength(20)]],
+      email: ['', [Validators.required, Validators.email, Validators.maxLength(50)]],
+      password: ['',[Validators.required, Validators.minLength(6), Validators.maxLength(50)]],
       passwordConfirm: ['',[Validators.required, passwordMatchValidator]],
       region: ['', Validators.required],
       comuna: [{value: '', disabled: true}, Validators.required],
