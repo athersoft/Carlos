@@ -1,13 +1,19 @@
 <ion-header [translucent]="true">
+
   <ion-toolbar>
-    <ion-title>
-      Status
-    </ion-title>
+    <div class="header-tabs">
+
+      <ion-button aria-label="Log Out" color="dark" [routerLink]="['/title-page']">
+        <ion-icon name="log-out-outline" aria-hidden="true"></ion-icon>
+      </ion-button>
+
+      <ion-title>
+        Status
+      </ion-title>
+
+    </div>
   </ion-toolbar>
 
-  <ion-button aria-label="Log Out" color="dark" [routerLink]="['/title-page']">
-    <ion-icon name="log-out-outline" aria-hidden="true"></ion-icon>
-  </ion-button>
 </ion-header>
 
 <ion-content [fullscreen]="true">

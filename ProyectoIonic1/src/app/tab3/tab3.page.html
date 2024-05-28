@@ -1,13 +1,19 @@
 <ion-header [translucent]="true">
+
   <ion-toolbar>
-    <ion-title>
-      Victims List
-    </ion-title>
+    <div class="header-tabs">
+
+      <ion-button aria-label="Log Out" color="dark" [routerLink]="['/title-page']">
+        <ion-icon name="log-out-outline" aria-hidden="true"></ion-icon>
+      </ion-button>
+
+      <ion-title>
+        Victims List
+      </ion-title>
+
+    </div>
   </ion-toolbar>
 
-  <ion-button aria-label="Log Out" color="dark" [routerLink]="['/title-page']">
-    <ion-icon name="log-out-outline" aria-hidden="true"></ion-icon>
-  </ion-button>
 </ion-header>
 
 <ion-content [fullscreen]="true">
@@ -22,11 +28,9 @@
     <div class="global-content">
       <div class="victims-list-container">
         <ul>
-                         
-          
           <div [innerHTML]="'<ul><button>Edit     </button>  <button>+</button><ul>'"></div>
-
-      </ul>
+        </ul>
+        
         <ul>
           <li *ngFor="let victima of victimas.victimas">
             {{ victima.nombre }} - {{ victima.estado }}
