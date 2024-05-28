@@ -36,73 +36,177 @@
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
 
+* {
+    font-family: "Lexend", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
 .global-content 
 {
+    margin-left: auto;
+    margin-right: auto;
+
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
     height: 100%;
 }
 
-.button{
-    background-color: #828282;
-    width: 250px;
-    height: 32px;
-    border-radius: 5px;
+.centro{
+    margin-left: auto;
+    margin-right: auto;
+
+    //width: 80%;
+    max-width: 90%;
+    
+    display: flex; 
+    justify-content: center;
+    align-items: center; 
+    flex-direction: column;
+
+    text-align: center;
 }
 
-.button-highlighted
+.header-tabs{
+    margin-left: auto;
+    margin-right: auto;
+    
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.ui-button
 {
-    background-color: #FF7F37;
+    --background: #212121;
+    --background-focused: #828282;
+    --background-activated: #FF7F37;
+  
+    --color: #FFFFFF;
+    --color-focused: #d46f34;
+    --color-selected: #FF7F37;
+  
+    --border-radius: 5px;
+    --border-color: #828282;
+    --border-style: solid;
+    --border-width: 1px;
+  
+    --box-shadow: 0 2px 6px 0 rgb(0, 0, 0, 0);
+  
+    --ripple-color: #FF7F37;
 }
 
-.input_container{
-    width: 100%;
-    padding: 0px;
-}
-.input_container .input-row{
-    margin-top: 12px;
-}
-.input_container select{
-    resize: none;
-    width: 90%;
-    height: 28px;
-    margin: 0 0 3px;
-    background-color: #212121;
-    color: #ffffff;
-    border-radius: 5px;
-    border: 1px solid #828282;
-    outline: 0;
-}
-
-input[type="checkbox"] {
-    transform: scale(3); /* Increase the size of the checkbox */
-    margin-top: 12px;
-}
-.input_container input:not([type="submit"]){
-    width: 80%;
-    margin: 0 0 3px;
-    background-color: #212121;
-    color: #ffffff;
-    padding: 10px 15px;
-    height: 8px;
-    line-height: 30px;
-    border-radius: 5px;
-    border: 1px solid #828282;
-    outline: 0;
-}
-.input_container input:not([type="submit"]):focus,
-.input_container select:focus{
-    border-color: #FF7F37;
+.ui-button-light
+{
+    --background: #828282;
+    --background-focused: #828282;
+    --background-activated: #FF7F37;
+  
+    --color: #FFFFFF;
+    --color-focused: #d46f34;
+    --color-selected: #FF7F37;
+  
+    --border-radius: 5px;
+    --border-color: #828282;
+    --border-style: solid;
+    --border-width: 1px;
+  
+    --box-shadow: 0 2px 6px 0 rgb(0, 0, 0, 0);
+  
+    --ripple-color: #FF7F37;
 }
 
-*::-webkit-input-placeholder{
-    opacity: 1;
-    color: #828282;
+.ui-button-highlight
+{
+    --background: #FF7F37;
+    --background-focused: #FF7F37;
+    --background-activated: #FF7F37;
+  
+    --color: #FFFFFF;
+    --color-focused: #d46f34;
+    --color-selected: #FF7F37;
+  
+    --border-radius: 5px;
+    --border-color: #00000000;
+    --border-style: solid;
+    --border-width: 1px;
+  
+    --box-shadow: 0 2px 6px 0 rgb(0, 0, 0, 0);
+  
+    --ripple-color: #FF7F37;
 }
 
-.tyc{
-    font-size: 12px;
+.bar
+{
+    background: #212121;
+}
+
+:root {
+	--ion-color-primary: #FF7F37;
+	--ion-color-primary-rgb: 255,127,55;
+	--ion-color-primary-contrast: #FFFFFF;
+	--ion-color-primary-contrast-rgb: 255,255,255;
+	--ion-color-primary-shade: #e07030;
+	--ion-color-primary-tint: #ff8c4b;
+
+	--ion-color-secondary: #828282;
+	--ion-color-secondary-rgb: 130,130,130;
+	--ion-color-secondary-contrast: #FFFFFF;
+	--ion-color-secondary-contrast-rgb: 255,255,255;
+	--ion-color-secondary-shade: #727272;
+	--ion-color-secondary-tint: #8f8f8f;
+
+	--ion-color-tertiary: #212121;
+	--ion-color-tertiary-rgb: 33,33,33;
+	--ion-color-tertiary-contrast: #FFFFFF;
+	--ion-color-tertiary-contrast-rgb: 255,255,255;
+	--ion-color-tertiary-shade: #1d1d1d;
+	--ion-color-tertiary-tint: #373737;
+
+	--ion-color-success: #2dd55b;
+	--ion-color-success-rgb: 45,213,91;
+	--ion-color-success-contrast: #000000;
+	--ion-color-success-contrast-rgb: 0,0,0;
+	--ion-color-success-shade: #28bb50;
+	--ion-color-success-tint: #42d96b;
+
+	--ion-color-warning: #ffc409;
+	--ion-color-warning-rgb: 255,196,9;
+	--ion-color-warning-contrast: #000000;
+	--ion-color-warning-contrast-rgb: 0,0,0;
+	--ion-color-warning-shade: #e0ac08;
+	--ion-color-warning-tint: #ffca22;
+
+	--ion-color-danger: #ff0000;
+	--ion-color-danger-rgb: 255,0,0;
+	--ion-color-danger-contrast: #000000;
+	--ion-color-danger-contrast-rgb: 0,0,0;
+	--ion-color-danger-shade: #e00000;
+	--ion-color-danger-tint: #ff1a1a;
+
+	--ion-color-light: #f6f8fc;
+	--ion-color-light-rgb: 246,248,252;
+	--ion-color-light-contrast: #000000;
+	--ion-color-light-contrast-rgb: 0,0,0;
+	--ion-color-light-shade: #d8dade;
+	--ion-color-light-tint: #f7f9fc;
+
+	--ion-color-medium: #5f5f5f;
+	--ion-color-medium-rgb: 95,95,95;
+	--ion-color-medium-contrast: #ffffff;
+	--ion-color-medium-contrast-rgb: 255,255,255;
+	--ion-color-medium-shade: #545454;
+	--ion-color-medium-tint: #6f6f6f;
+
+	--ion-color-dark: #181818;
+	--ion-color-dark-rgb: 24,24,24;
+	--ion-color-dark-contrast: #ffffff;
+	--ion-color-dark-contrast-rgb: 255,255,255;
+	--ion-color-dark-shade: #151515;
+	--ion-color-dark-tint: #2f2f2f;
+
 }
 
 /*

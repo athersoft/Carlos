@@ -1,15 +1,36 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-button [routerLink]="['/title-page']">
+    <ion-button [routerLink]="['/title-page']" color="secondary">
       <ion-icon name="chevron-back-outline"></ion-icon>
     </ion-button>
     <ion-title>Sign Up</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class = "contenido">
+<ion-content [fullscreen]="true">
   <div class = "centro">
-    <ion-button [routerLink]="['/login-page']">Already have an account</ion-button>
+
+    <ion-text>
+      <h1>
+        Create an account
+      </h1>
+      <br>
+      Enter your personal information to create an account for this app
+      <br>
+      <br>
+      Do you
+    </ion-text>
+
+    <ion-button
+      [routerLink]="['/login-page']"
+      color="secondary"
+    >
+      Already have an account?
+    </ion-button>
+
+    <ion-text>
+      <br>
+    </ion-text>
 
     <form [formGroup]="signupForm" (ngSubmit)="SignupValidation()">
 
@@ -67,7 +88,7 @@
 
       <ion-item lines="none">
         <ion-input
-          type="passwordConfirm"
+          type="password"
           formControlName="passwordConfirm"
           placeholder="Repeat your password"
           label="Confirm Password"
@@ -113,15 +134,14 @@
       </ion-item>
 
       <ion-item class="ion-margin-vertical" lines="none">
-        <ion-toggle formControlName="tyc" labelPlacement="start" color="success">
+        <ion-toggle formControlName="tyc" labelPlacement="start" color="primary">
           I accept the terms and conditions that apply
         </ion-toggle>
       </ion-item>
 
       <ion-button
         type="submit"
-        expand="full"
-        class="button-highlighted"
+        expand="block"
         [color]="btnColor"
         [disabled]="!signupForm.valid"
         [routerLink]="['/tabs/tab1']"

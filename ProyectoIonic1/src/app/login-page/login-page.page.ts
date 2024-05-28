@@ -24,11 +24,12 @@ export class LoginPagePage implements OnInit {
   }
   get btnColor()
   {
-    return this.loginForm.valid ? 'success' : 'danger';
+    return this.loginForm.valid ? 'primary' : 'tertiary';
   }
   get btnText()
   {
-    return this.loginForm.valid ? 'Sign Up!' : 'You must fill all the fields';
+    //return this.loginForm.valid ? 'Sign Up!' : 'You must fill all the fields';
+    return 'Log In';
   }
 
   LoginValidation()

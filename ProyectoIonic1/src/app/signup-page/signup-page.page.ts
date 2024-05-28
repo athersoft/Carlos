@@ -49,11 +49,11 @@ export class SignupPagePage implements OnInit
 
   get btnColor()
   {
-    return this.signupForm.valid ? 'success' : 'danger';
+    return this.signupForm.valid ? 'primary' : 'tertiary';
   }
   get btnText()
   {
-    return this.signupForm.valid ? 'Sign Up!' : 'You must fill all the fields';
+    return this.signupForm.valid ? 'Sign Up' : 'You must fill all the fields';
   }
   get regionNumber()
   {
