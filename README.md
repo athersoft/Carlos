@@ -29,13 +29,19 @@ En la aplicación se hace lectura de archivos JSON en dos ocaciones: La primera 
 
 ### EP2.4
 
-En estas dos imágenes se ocupa la Humanización de mensajes, Lenguaje simple y la facilización de la navegación por el uso de colores. 
-![Screenshot]("recursos entrega/Screenshot 2024-05-28 212739.png")
-![Screenshot](./recursos entrega/Screenshot 2024-05-28 212813.png)
-![Screenshot]("./recursos entrega/Screenshot 2024-05-28 212841.png")
+En estas dos imágenes se ocupa la Humanización de mensajes, Lenguaje simple y la facilización de la navegación por el uso de colores.
+
+![Screenshot1](recursos entrega/Screenshot-2024-05-28-212739.png)
+
+![Screenshot2](recursos entrega/Screenshot-2024-05-28-212813.png)
+
+![Screenshot3](recursos entrega/Screenshot-2024-05-28-212841.png)
+
 
 Aquí se ocupa la tab bar y el flat design.
-![Screenshot](recursos entrega/Screenshot 2024-05-28 213052.png)
+
+![Screenshot4](recursos entrega/Screenshot-2024-05-28-213052.png)
+
 
 
 [js-badge-sm]: https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=000&style=flat
