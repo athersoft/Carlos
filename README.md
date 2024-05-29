@@ -25,22 +25,22 @@ La aplicación es un software que permite conectarse al robot "Carlos". La aplic
 En la aplicación se hace lectura de archivos JSON en dos ocaciones: La primera en la página Tab3 donde se lee una lista de víctimas, la segunda en la página Signup-page donde se hace lectura de las regiones y comunas.
 
 ### EP2.3
-[Modelo de la base de datos](recursos entrega/diagrama_db.png)
+[Modelo de la base de datos](https://cdn.discordapp.com/attachments/1217510599802622084/1245193123269972129/diagrama_db.png?ex=6657dbf7&is=66568a77&hm=260567a0b1a9da263d91b81dd591bd77792762ea72ae1aa49b678bda3c872361&)
 
 ### EP2.4
 
 En estas dos imágenes se ocupa la Humanización de mensajes, Lenguaje simple y la facilización de la navegación por el uso de colores.
 
-![Screenshot1](recursos entrega/Screenshot-2024-05-28-212739.png)
+![Screenshot1](https://cdn.discordapp.com/attachments/1217510599802622084/1245193123483877416/Screenshot_2024-05-28_212739.png?ex=6657dbf7&is=66568a77&hm=304b3d2a107a22335b2d422c291ac93f4c8c2df64e496ce538e29c02a6e8c5da&)
 
-![Screenshot2](recursos entrega/Screenshot-2024-05-28-212813.png)
+![Screenshot2](https://cdn.discordapp.com/attachments/1217510599802622084/1245193123722690661/Screenshot_2024-05-28_212813.png?ex=6657dbf7&is=66568a77&hm=5779444350a61d5f73d4b7cd871c8c893bde7d3e140995fab83b7d6cc4987336&)
 
-![Screenshot3](recursos entrega/Screenshot-2024-05-28-212841.png)
+![Screenshot3](https://cdn.discordapp.com/attachments/1217510599802622084/1245193123961901128/Screenshot_2024-05-28_212841.png?ex=6657dbf7&is=66568a77&hm=b0c8fcbdd0d2859ce741a1d38342b5b52e28a176939842d3efd1296f4fd058e6&)
 
 
-Aquí se ocupa la tab bar y el flat design.
+Aquí se ocupa la tab bar y el flat design (este último se puede ver en todas las páginas).
 
-![Screenshot4](recursos entrega/Screenshot-2024-05-28-213052.png)
+![Screenshot4](https://cdn.discordapp.com/attachments/1217510599802622084/1245193124276600852/Screenshot_2024-05-28_213052.png?ex=6657dbf7&is=66568a77&hm=b743774fdef28ee013daf9b1098a20cf7a15f8e866a74d5bb5a23b9d94d54b80&)
 
 
 
