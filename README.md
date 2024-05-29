@@ -10,30 +10,30 @@
 
 ## Integrantes
 
-> - Bryam Gonzalez Mendez
-> - Alejandro Malvacias Pimentel
-> - Pablo Paillalef Avendaño
-> - Benjamín Vega Mardones
+- Bryam Gonzalez Mendez
+- Alejandro Malvacias Pimentel
+- Pablo Paillalef Avendaño
+- Benjamín Vega Mardones
 
 ## Descripción
 
-> La aplicación es un software que permite conectarse al robot "Carlos". La aplicación muestra la lista de víctimas que Carlos encuentra en su camino, el estado de Carlos, y permite ver lo que Carlos está viendo mientras explora.
+La aplicación es un software que permite conectarse al robot "Carlos". La aplicación muestra la lista de víctimas que Carlos encuentra en su camino, el estado de Carlos, y permite ver lo que Carlos está viendo mientras explora.
 
 ### Patrones de diseño utilizados
-> - Tab Bar
-> - Flat Design
-> - Humanización de Mensajes
-> - Lenguaje Simple
-> - Uso de colores para facilitar la navegación del usuario
+- Tab Bar
+- Flat Design
+- Humanización de Mensajes
+- Lenguaje Simple
+- Uso de colores para facilitar la navegación del usuario
 
 ### Funcionalidades
 
-> - Cámara en vivo de los ojos de Carlos.
-> - Inicio de sesión.
-> - Creación de cuenta.
-> - Listado de encuentros.
-> - Alerta de encuentro.
-> - Monitoreo del estado de Carlos.
+- Cámara en vivo de los ojos de Carlos.
+- Inicio de sesión.
+- Creación de cuenta.
+- Listado de encuentros.
+- Alerta de encuentro.
+- Monitoreo del estado de Carlos.
 
 <div align="center">
 
@@ -41,21 +41,23 @@
 
 </div>
 
-## Maquetación web
+## Entrega Parcial 2
 
-- images: Carpeta donde se almacenan todas las imágenes utilizadas en la página web. 
-- pages: Carpeta donde se almacenan todas las páginas HTML de la página web.
-    - base.html: Página que se utiliza en el desarollo como base para duplicar y crear otras.
-    - config.html: Página que permite iniciar sesión o crear una cuenta.
-    - index.html: Página que muestra el estado de conexión del robot.
-    - list.html: Página que muestra la lista de víctimas encontradas por el robot Carlos.
-    - live.html: Página que muestra un video o representación de lo que el robot Carlos está viendo (de momento hay una imagen de un Carlos aleatorio con motivos de testeo).
-    - login.html: Página donde el usuario puede iniciar sesión.
-    - signup.html: Página donde el usuario puede crear su cuenta ingresando los datos necesarios.
-- scripts: Carpeta donde se almacenan todos los archivos de JavaScript propios para el funcionamiento de la página web.
-    - login.js: Archivo de JavaScript que se encarga de validar los datos ingresados en el inicio de sesión.
-    - signup.js: Archivo de JavaScript que se encarga de validar los datos ingresados en la creación de la cuenta.
-    - victim.js: Archivo de JavaScript que se encarga de cambiar el color del estado de la víctima en la lista.
+### EP2.2
+En la aplicación se hace lectura de archivos JSON en dos ocaciones: La primera en la página Tab3 donde se lee una lista de víctimas, la segunda en la página Signup-page donde se hace lectura de las regiones y comunas.
+
+### EP2.3
+[Modelo de la base de datos](recursos entrega/diagrama_db.png)
+
+### EP2.4
+En estas dos imágenes se ocupa la Humanización de mensajes, Lenguaje simple y la facilización de la navegación por el uso de colores. 
+[Screenshot](recursos entrega/Screenshot 2024-05-28 212739.png)
+[Screenshot](recursos entrega/Screenshot 2024-05-28 212813.png)
+[Screenshot](recursos entrega/Screenshot 2024-05-28 212841.png)
+
+Aquí se ocupa la tab bar y el flat design.
+[Screenshot](recursos entrega/Screenshot 2024-05-28 213052.png)
+
 
 [js-badge-sm]: https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=000&style=flat
 [js-web]: https://developer.mozilla.org/es/docs/Web/JavaScript
