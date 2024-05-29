@@ -25,7 +25,7 @@ La aplicación es un software que permite conectarse al robot "Carlos". La aplic
 En la aplicación se hace lectura de archivos JSON en dos ocaciones: La primera en la página Tab3 donde se lee una lista de víctimas, la segunda en la página Signup-page donde se hace lectura de las regiones y comunas.
 
 ### EP2.3
-[Modelo de la base de datos](https://cdn.discordapp.com/attachments/1217510599802622084/1245193123269972129/diagrama_db.png?ex=6657dbf7&is=66568a77&hm=260567a0b1a9da263d91b81dd591bd77792762ea72ae1aa49b678bda3c872361&)
+![Modelo de la base de datos](https://cdn.discordapp.com/attachments/1217510599802622084/1245193123269972129/diagrama_db.png?ex=6657dbf7&is=66568a77&hm=260567a0b1a9da263d91b81dd591bd77792762ea72ae1aa49b678bda3c872361&)
 
 ### EP2.4
 
