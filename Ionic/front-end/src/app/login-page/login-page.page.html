@@ -4,7 +4,7 @@
     <div class="header-tabs">
 
       <ion-button [routerLink]="['/title-page']" color="secondary" aria-label="Return to title">
-        <ion-icon name="chevron-back-outline"></ion-icon>
+        <ion-icon name="chevron-back-outline" slot="icon-only"></ion-icon>
       </ion-button>
 
       <ion-title>
@@ -32,16 +32,16 @@
       
       <ion-item lines="none">
         <ion-input
-        type="email"
-        formControlName="email"
+          type="email"
+          formControlName="email"
           placeholder="example@domain.com"
           label="E-mail"
           labelPlacement="stacked"
           [errorText]="formError('email')"
           required
         >
-      </ion-input>
-    </ion-item>
+        </ion-input>
+      </ion-item>
     
       <ion-item lines="none">
         <ion-input
@@ -52,23 +52,24 @@
           labelPlacement="stacked"
           [errorText]="formError('password')"
           required
-          >    
+        >    
         </ion-input>
       </ion-item>
       
       <ion-button
-      type="submit"
-      expand="block"
-      [color]="btnColor"
-      [disabled]="!loginForm.valid"
-      [routerLink]="['/tabs/tab1']"
-      >  
+        type="submit"
+        expand="block"
+        [color]="btnColor"
+        [disabled]="!loginForm.valid"
+        [routerLink]="['/tabs/tab1']"
+        >  
         {{btnText}}
       </ion-button>
       
       <ion-button
         [routerLink]="['/signup-page']"
         color="secondary"
+        expand="block"
       >
         I don't have an account
       </ion-button>

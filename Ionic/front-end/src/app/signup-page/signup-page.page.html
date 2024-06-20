@@ -4,7 +4,7 @@
     <div class="header-tabs">
 
       <ion-button [routerLink]="['/title-page']" color="secondary" aria-label="Return to title">
-        <ion-icon name="chevron-back-outline"></ion-icon>
+        <ion-icon name="chevron-back-outline" slot="icon-only"></ion-icon>
       </ion-button>
 
       <ion-title>
@@ -24,8 +24,7 @@
         Create an account
       </h1>
       <br>
-      Enter your personal information to create an account for this app
-      <br>
+      Enter your personal information to create an account for this app.
       <br>
       Do you
     </ion-text>
@@ -111,8 +110,10 @@
       <ion-item lines="full">
         <ion-select
           formControlName="region"
-          interface="action-sheet"
           labelPlacement="stacked"
+          placeholder="Select a region"
+          okText="Select"
+          cancelText="Cancel"
           (ionChange)="onRegionChange()"
         >
           <div slot="label">Region</div>
@@ -128,8 +129,10 @@
       <ion-item lines="full">
         <ion-select
           formControlName="comuna"
-          interface="action-sheet"
           labelPlacement="stacked"
+          placeholder="Select commune"
+          okText="Select"
+          cancelText="Cancel"
         >
           <div slot="label">Commune</div>
           

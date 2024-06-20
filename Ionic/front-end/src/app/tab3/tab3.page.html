@@ -4,7 +4,7 @@
     <div class="header-tabs">
 
       <ion-button aria-label="Log Out" color="dark" [routerLink]="['/title-page']">
-        <ion-icon name="log-out-outline" aria-hidden="true"></ion-icon>
+        <ion-icon name="log-out-outline" aria-hidden="true" slot="icon-only"></ion-icon>
       </ion-button>
 
       <ion-title>
@@ -25,24 +25,27 @@
   <app-explore-container name="Victims List page"></app-explore-container>
   
   <div *ngIf="victimas">
-    <div class="global-content">
-      <div class="victims-list-container">
+    <ion-list lines="full">
+      <ion-item *ngFor="let victima of victimas.victimas">
         <ion-toolbar>
-          <ion-text>
-            {{ victima.nombre }} - {{ victima.estado }}
-          </ion-text>
-        </ion-toolbar>
-        <ul>
-          <div [innerHTML]="'<ul><button>Edit     </button>  <button>+</button><ul>'"></div>
-        </ul>
         
-        <ul>
-          <li *ngFor="let victima of victimas.victimas">
-            
-          </li>
-        </ul>
-      </div>    
-    </div>
+          <ion-text>
+            {{ victima.nombre }}
+          </ion-text>
+
+          <ion-button
+            slot="primary"
+            [color]="getStateColor(victima.estado)"
+            (click)="changeState(victima)"
+          >
+            <ion-text>
+              {{ victima.estado }}
+            </ion-text>
+          </ion-button>
+
+        </ion-toolbar>
+      </ion-item>
+    </ion-list>
   </div>
     
 </ion-content>
