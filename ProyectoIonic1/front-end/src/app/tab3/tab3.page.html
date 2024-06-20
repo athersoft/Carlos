@@ -27,13 +27,18 @@
   <div *ngIf="victimas">
     <div class="global-content">
       <div class="victims-list-container">
+        <ion-toolbar>
+          <ion-text>
+            {{ victima.nombre }} - {{ victima.estado }}
+          </ion-text>
+        </ion-toolbar>
         <ul>
           <div [innerHTML]="'<ul><button>Edit     </button>  <button>+</button><ul>'"></div>
         </ul>
         
         <ul>
           <li *ngFor="let victima of victimas.victimas">
-            {{ victima.nombre }} - {{ victima.estado }}
+            
           </li>
         </ul>
       </div>    

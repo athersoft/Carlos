@@ -16,6 +16,5 @@ export class Tab3Page {
       this.victimas = data;
       console.log(this.victimas)
     });
-}
-
+  }
 }

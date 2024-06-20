@@ -143,6 +143,15 @@
     background: #212121;
 }
 
+.formStyle
+{
+    max-width: 100%;
+    min-width: 20%;
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
 :root {
 	--ion-color-primary: #FF7F37;
 	--ion-color-primary-rgb: 255,127,55;
