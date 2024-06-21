@@ -24,22 +24,22 @@
   </ion-header>
   <app-explore-container name="Victims List page"></app-explore-container>
   
-  <div *ngIf="victimas">
+  <div *ngIf="victims">
     <ion-list lines="full">
-      <ion-item *ngFor="let victima of victimas.victimas">
+      <ion-item *ngFor="let victim of victims.victims">
         <ion-toolbar>
         
           <ion-text>
-            {{ victima.nombre }}
+            {{ victim.name }}
           </ion-text>
 
           <ion-button
             slot="primary"
-            [color]="getStateColor(victima.estado)"
-            (click)="changeState(victima)"
+            [color]="getStateColor(victim.status)"
+            (click)="changeState(victim)"
           >
             <ion-text>
-              {{ victima.estado }}
+              {{ victim.status }}
             </ion-text>
           </ion-button>
 

@@ -1,0 +1,42 @@
+{"users":[
+    {
+        "id": 1,
+        "name": "Armando Casas",
+        "email": "a@b.c",
+        "password": "a",
+        "run": "21123104-1",
+        "region": "lo que sea",
+        "comuna": "lo que sea también"
+    },
+
+    {
+        "id": 2,
+        "name": "Armando Paredes",
+        "email": "aaaaaaaaaa@b.c",
+        "password": "b",
+        "run": "21123104-1",
+        "region": "lo que sea",
+        "comuna": "lo que sea también"
+    },
+
+    {
+        "id": 3,
+        "name": "Pia Ando",
+        "email": "aasdasdasd@b.c",
+        "password": "aaaaaaaaaaaaaaaaaaaaa",
+        "run": "21123104-1",
+        "region": "lo que sea",
+        "comuna": "lo que sea también"
+    },
+
+    {
+        "id": 4,
+        "name": "Deca Pita Cabezas",
+        "email": "abbbbbb@bcccccc.cdddddd",
+        "password": "P[]OIL!@jidi**!?O#!¨*¨SAD AS",
+        "run": "21123104-1",
+        "region": "lo que sea",
+        "comuna": "lo que sea también"
+    }
+]
+}

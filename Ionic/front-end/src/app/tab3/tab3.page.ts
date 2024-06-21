@@ -8,13 +8,13 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['tab3.page.scss']
 })
 export class Tab3Page {
-  victimas: any;
+  victims: any;
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    this.http.get('../../assets/json/victimas.json').subscribe(data => {
-      this.victimas = data;
-      console.log(this.victimas)
+    this.http.get('../../assets/json/victims.json').subscribe(data => {
+      this.victims = data;
+      console.log(this.victims)
     });
   }
 
