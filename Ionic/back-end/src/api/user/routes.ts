@@ -3,10 +3,10 @@ import express from 'express';
 import controllers from './controllers';
 import middlewares from '../middlewares';
 
-const authRoutes = express.Router();
+const userRoutes = express.Router();
 
-authRoutes.get('/getUser', middlewares.authGuard, controllers.getUserFromToken)
-authRoutes.post('/signup', controllers.createAccount);
-authRoutes.post('/login', controllers.logIn);
+userRoutes.get('/getUser', middlewares.authGuard, controllers.getUserFromToken)
+userRoutes.post('/signup', controllers.createAccount);
+userRoutes.post('/login', controllers.logIn);
 
-export default authRoutes;
+export default userRoutes;
