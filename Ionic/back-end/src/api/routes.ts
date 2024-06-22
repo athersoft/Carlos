@@ -1,14 +1,14 @@
 import express from 'express';
 
 import userRoutes from './user/routes';
-import docRoutes from './documento/routes';
-import victimaRoutes from './victima/routes';
+import expRoutes from './exploration/routes';
+import victimRoutes from './victima/routes';
 
 const router = express.Router();
 
 router.use('/users', userRoutes);
-router.use('/documents', docRoutes);
-router.use('/victima', victimaRoutes);
+router.use('/exploration', expRoutes);
+router.use('/victima', victimRoutes);
 
 router.use('*', (req, res) => {
   res.status(404).json({

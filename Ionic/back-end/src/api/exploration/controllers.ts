@@ -2,11 +2,8 @@ import { Request, Response } from 'express';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
-import { existeUsuario, usuariosRepo } from '../../data/functions/usuarios';
 import { validateIn } from '../functions';
 import { CustomRequest } from '../middlewares';
-
-const SECRET_KEY = process.env.JWT_SECRET_KEY ?? 'secretkey';
 
 const SECRET_KEY = process.env.JWT_SECRET_KEY ?? 'secretkey';
 

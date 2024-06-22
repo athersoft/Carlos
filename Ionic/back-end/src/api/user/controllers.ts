@@ -2,13 +2,13 @@ import { Request, Response } from 'express';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
-import { alreadyRegistederEmail, repositoryOfUsers } from '../../data/functions/users';
 import { validateIn } from '../functions';
 import { CustomRequest } from '../middlewares';
 
 const SECRET_KEY = process.env.JWT_SECRET_KEY ?? 'secretkey';
 
 async function createAccount(req: Request, res: Response): Promise<void> {
+  
   // Checks if the account already exist
   if (await alreadyRegistederEmail(req.body.email)) {
     res
@@ -28,7 +28,7 @@ async function createAccount(req: Request, res: Response): Promise<void> {
     return;
   }
 
-  const { username, email, password } = req.body;
+  const { id, name, email, password, run, region, commune } = req.body;
 
   // Checks if the email is already registered
   if (await alreadyRegistederEmail(email)) {
@@ -46,10 +46,13 @@ async function createAccount(req: Request, res: Response): Promise<void> {
 
   // Creates the user using the values received
   const user = repositoryOfUsers.create({
-    name: username,
-    email,
+    id: id,
+    name: name,
+    email: email,
     password: hashedPass,
-    rol: 'user',
+    run: run,
+    region: region,
+    commune: commune
   });
   const { name: savedUsername, email: savedEmail } =
     await repositoryOfUsers.save(user);
@@ -57,16 +60,15 @@ async function createAccount(req: Request, res: Response): Promise<void> {
   res.status(201).send({
     message: 'Account created successfully.',
     user: {
-      username: savedUsername,
-      email: savedEmail,
-      rol: 'user',
+      name: savedUsername,
+      email: savedEmail
     },
   });
 }
 
 async function logIn(req: Request, res: Response): Promise<void> {
   // Checks if there is data missing
-  if (!req.body || !req.body.username || !req.body.password) {
+  if (!req.body || !req.body.email || !req.body.password) {
     res.status(400).send({
       message: 'Error: Missing data.',
     });
@@ -97,7 +99,7 @@ async function logIn(req: Request, res: Response): Promise<void> {
   // Signs in and gets the token, I should probably use a boolean to extend the time
   // for example "Remember my account for 30 days (True/False)"
   const token = jwt.sign(
-    { username: user.name, rol: user.rol },
+    { name: user.email },
     SECRET_KEY,
     { expiresIn: '24h' },
   );
@@ -111,8 +113,7 @@ async function logIn(req: Request, res: Response): Promise<void> {
       expiresOn: new Date(Date.now() + 24 * 60 * 60 * 1000).getTime(),
     },
     user: {
-      username: user.name,
-      rol: user.rol,
+      name: user.name
     },
   });
 }
@@ -121,15 +122,14 @@ async function getUserFromToken(req: Request, res: Response): Promise<void> {
   // Converts the token
   const token = (req as CustomRequest).token;
   // Tries to get the user using the token
-  const usuario = await repositoryOfUsers.findOne({
+  const user = await repositoryOfUsers.findOne({
     where: { name: token.id },
   });
 
   // Returns the user (if any)
   res.status(200).send({
-    usuario: {
-      username: usuario?.name,
-      rol: usuario?.rol,
+    user: {
+      name: user?.name
     },
   });
 }
