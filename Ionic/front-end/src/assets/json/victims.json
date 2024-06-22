@@ -3,35 +3,35 @@
         "id": 1,
         "user_id": 1,
         "name": "Bonifacio Sandemetrio",
-        "status": "Seguro"
+        "status": 0
     },
 
     {
         "id": 2,
         "user_id": 2,
         "name": "Armando Casas",
-        "status": "Grave"
+        "status": 2
     },
 
     {
         "id": 3,
         "user_id": 1,
         "name": "Cristiano Ronaldo",
-        "status": "En peligro"
+        "status": 1
     },
 
     {
         "id": 4,
         "user_id": 1,
         "name": "Bryam Gonzalez",
-        "status": "Grave"
+        "status": 2
     },
 
     {
         "id": 5,
         "user_id": 1,
         "name": "Miku Hatsune",
-        "status": "Grave"
+        "status": 2
     }
 ]
 }

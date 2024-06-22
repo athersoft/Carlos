@@ -2,10 +2,10 @@ import { Entity, Column, Unique, PrimaryColumn, OneToMany, IntegerType } from 't
 
 import { User } from './User';
 
-@Entity()
-@Unique(['id', 'user'])
+Entity()
+Unique(['id', 'user'])
 export class Victim {
-  @PrimaryColumn()
+  PrimaryColumn()
   id: number;
 
   @Column({ type: 'text', length: 80 })
@@ -14,6 +14,6 @@ export class Victim {
   @Column({ type: 'text', length: 20 })
   state: string;
 
-  @ManyToOne(() => Usuario, (user) => user.victims)
+  @ManyToOne(() => User, (user) => user.victims)
   user: User;
 }

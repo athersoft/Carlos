@@ -2,31 +2,36 @@
     {
         "id": 1,
         "user_id": 1,
-        "name": "Bonifacio Sandemetrio"
+        "name": "Bonifacio Sandemetrio",
+        "location": "my imagination"
     },
 
     {
         "id": 2,
         "user_id": 2,
-        "name": "Armando Casas"
+        "name": "Armando Casas",
+        "location": "somewhere"
     },
 
     {
         "id": 3,
         "user_id": 1,
-        "name": "Cristiano Ronaldo"
+        "name": "Cristiano Ronaldo",
+        "location": "somewhere too"
     },
 
     {
         "id": 4,
         "user_id": 1,
-        "name": "Bryam Gonzalez"
+        "name": "Bryam Gonzalez",
+        "location": "anywhere"
     },
 
     {
         "id": 5,
         "user_id": 1,
-        "name": "Miku Hatsune"
+        "name": "Miku Hatsune",
+        "location": "everywhere"
     }
 ]
 }

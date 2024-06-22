@@ -1,13 +1,13 @@
 import { Request, Response } from 'express';
 
-import { docRepo } from '../../data/functions/documentos';
-import { usuariosRepo } from '../../data/functions/usuarios';
+import { repositoryOfVictims } from '../../data/functions/victims';
+import { repositoryOfUsers } from '../../data/functions/users';
 import { validateIn } from '../functions';
 import { CustomRequest } from '../middlewares';
 import { User } from '../../data/entity/User';
 
 async function getDocs(req: Request, res: Response) {
-  const docs = await docRepo.find();
+  const docs = await repositoryOfVictims.find();
   res.status(200).json({
     message: 'Lista de documentos',
     docs,
@@ -22,13 +22,13 @@ async function addDocs(req: Request, res: Response) {
     return;
   }
   const docsReq: {titulo: string, contenido: string}[] = req.body.masive;
-  const { username } = (req as CustomRequest).token;
-  const user = await usuariosRepo.findOneBy({ username });
-  const docs = docRepo.create(docsReq.map((doc) => ({...doc, usuario: user })));
-  const savedDoc = await docRepo.save(docs);
+  const { email } = (req as CustomRequest).token;
+  const user = await repositoryOfUsers.findOneBy({ email });
+  const docs = repositoryOfVictims.create(docsReq.map((doc) => ({...doc, user: user })));
+  const savedDoc = await repositoryOfVictims.save(docs);
   res.status(201).json({
     message: 'Documentos creados con éxito',
-    doc: savedDoc.map(doc => ({...doc, usuario: user.username})),
+    doc: savedDoc.map(doc => ({...doc, user: user?.name})),
   });
   return;
 }
@@ -41,14 +41,14 @@ async function addDoc(req: Request, res: Response) {
     return;
   }
   const { titulo, contenido } = req.body;
-  const { username } = (req as CustomRequest).token;
-  const doc = docRepo.create({ titulo, contenido, usuario: await usuariosRepo.findOneBy({ username })});
-  const savedDoc = await docRepo.save(doc);
+  const { email } = (req as CustomRequest).token;
+  const doc = repositoryOfVictims.create({ titulo, contenido, usuario: await repositoryOfUsers.findOneBy({ email })});
+  const savedDoc = await repositoryOfVictims.save(doc);
   res.status(201).json({
     message: 'Documento creado con éxito',
     doc: {
       ...savedDoc,
-      usuario: username,
+      user: user,
     },
   });
 }
@@ -61,16 +61,16 @@ async function updateDoc(req: Request, res: Response) {
     return;
   }
   const { id, titulo, contenido } = req.body;
-  const doc = await docRepo.findOneBy({id});
-  if (!doc) {
+  const victim = await repositoryOfVictims.findOneBy({id});
+  if (!victim) {
     res.status(404).json({
       message: 'Documento no encontrado',
     });
     return;
   }
-  doc.titulo = titulo ?? doc.titulo;
-  doc.contenido = contenido ?? doc.contenido;
-  const savedDoc = await docRepo.save(doc);
+  victim.titulo = titulo ?? victim.titulo;
+  victim.contenido = contenido ?? victim.contenido;
+  const savedDoc = await repositoryOfVictims.save(victim);
   res.status(200).json({
     message: 'Documento actualizado con éxito',
     doc: savedDoc,
@@ -85,14 +85,14 @@ async function deleteDoc(req: Request, res: Response) {
     return;
   }
   const { id } = req.body;
-  const doc = await docRepo.findOneBy({id});
+  const doc = await repositoryOfVictims.findOneBy({id});
   if (!doc) {
     res.status(404).json({
       message: 'Documento no encontrado',
     });
     return;
   }
-  await docRepo.delete(id);
+  await repositoryOfVictims.delete(id);
   res.status(200).json({
     message: 'Documento eliminado con éxito'
   });
