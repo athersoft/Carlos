@@ -7,7 +7,10 @@ import { CustomRequest } from '../middlewares';
 
 const SECRET_KEY = process.env.JWT_SECRET_KEY ?? 'secretkey';
 
-async function getExploration(req: Request, res: Response): Promise<void> {
+async function getExploration(req: Request, res: Response): Promise<void>
+{
+  console.log("Getting Exploration");
+  /*
   // Converts the token
   const token = (req as CustomRequest).token;
   // Tries to get the user using the token
@@ -22,18 +25,22 @@ async function getExploration(req: Request, res: Response): Promise<void> {
       rol: usuario?.rol,
     },
   });
+  */
 }
 
-async function startExploration(req: Request, res: Response): Promise<void> {
-  
+async function startExploration(req: Request, res: Response): Promise<void>
+{
+  console.log("Starting Exploration");  
 }
 
-async function modifyExploration(req: Request, res: Response): Promise<void> {
-  
+async function modifyExploration(req: Request, res: Response): Promise<void>
+{
+  console.log("Modifying Exploration");    
 }
 
-async function deleteExploration(req: Request, res: Response): Promise<void> {
-
+async function deleteExploration(req: Request, res: Response): Promise<void>
+{
+  console.log("Deleting Exploration");  
 }
 
 export default {

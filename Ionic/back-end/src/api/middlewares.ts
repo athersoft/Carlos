@@ -5,7 +5,7 @@ import jwt from 'jsonwebtoken';
 const SECRET_KEY = process.env.JWT_SECRET_KEY ?? 'secretkey';
 
 export interface CustomRequest extends Request {
-  token: { id: string; name: string; email: string; rol: string };
+  token: { id: string; email: string; };
 }
 
 function authGuard(req: Request, res: Response, next: NextFunction): void {
@@ -19,10 +19,10 @@ function authGuard(req: Request, res: Response, next: NextFunction): void {
   }
   const token = authorization.replace('Bearer ', '');
   try {
-    const decoded: { id: string; name: string; email: string; rol: string } = jwt.verify(
+    const decoded: { id: string; email: string; } = jwt.verify(
       token,
       SECRET_KEY,
-    ) as { id: string; name: string; email: string; rol: string };
+    ) as { id: string; email: string; };
     (req as CustomRequest).token = decoded;
     next();
   } catch (error) {
