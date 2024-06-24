@@ -4,6 +4,7 @@ import { IonModal } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core/components';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { FormError, errorMsg } from '../misc/form-errors';
+import { VictimService } from '../services/victim-service.service';
 
 interface Victim {
   id: number;
@@ -21,7 +22,7 @@ export class Tab3Page {
   public results: any;
   public selectedVictim: any;
 
-  constructor(private http: HttpClient, private form:FormBuilder)
+  constructor(private http: HttpClient, private form:FormBuilder, private victimService:VictimService)
   {
     this.editVictimForm = this.form.group
     ({
@@ -31,7 +32,8 @@ export class Tab3Page {
     });
   }
 
-  ngOnInit() {
+  ngOnInit()
+  {
     this.http.get('../../assets/json/victims.json').subscribe(data => {
       this.victims = data;
       console.log(this.victims)

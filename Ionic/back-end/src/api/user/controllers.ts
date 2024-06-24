@@ -70,7 +70,7 @@ async function logIn(req: Request, res: Response): Promise<void> {
   const { email, password } = req.body;
 
   // Tries to get a user with the email
-  const retData = await StartQuery("SELECT id, name, email, password FROM user WHERE email = '" + req.body.email + "';");
+  const retData = await StartQuery("SELECT id, name, email, password FROM user WHERE email = '" + email + "';");
   const user = retData[0];
   console.log("User =", user);
 
@@ -83,15 +83,15 @@ async function logIn(req: Request, res: Response): Promise<void> {
   }
 
   console.log("Password =", password);
-  console.log("User.Password =", user.password);
+  console.log("User.Password  =", user.password);
 
-  // Temporary solution
-  const encryptedPassword = bcrypt.hashSync(user.password, 10);
-
-  console.log("User.Password =", encryptedPassword);
+  /*
+  const encryptedPassword = bcrypt.hashSync(user.name, 10);
+  console.log("HashedPassword =", encryptedPassword);
+  */
 
   // Checks if the password coincides with the encrypted password
-  if (!bcrypt.compareSync(password, encryptedPassword)) {
+  if (!bcrypt.compareSync(password, user.password)) {
     res.status(401).send({
       message: 'The e-mail and/or password are incorrect.',
     });

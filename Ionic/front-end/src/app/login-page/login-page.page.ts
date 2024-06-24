@@ -1,6 +1,8 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { FormError, errorMsg } from '../misc/form-errors';
+import { UserService } from '../services/user-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -9,16 +11,17 @@ import { FormError, errorMsg } from '../misc/form-errors';
 })
 export class LoginPagePage implements OnInit {
   loginForm: FormGroup;
+  loginSuccessful: boolean;
 
-  constructor(private form:FormBuilder)
+  constructor(private form:FormBuilder, private userService:UserService, private router: Router)
   {
+    this.loginSuccessful = false;
     this.loginForm = this.form.group
     ({
       email: ['', [Validators.required, Validators.email, Validators.maxLength(50)]],
       password: ['',[Validators.required, Validators.minLength(6), Validators.maxLength(50)]],
     });
   }
-
 
   ngOnInit() {
   }
@@ -31,24 +34,33 @@ export class LoginPagePage implements OnInit {
     //return this.loginForm.valid ? 'Sign Up!' : 'You must fill all the fields';
     return 'Log In';
   }
+  get btnRedirection()
+  {
+    return this.loginSuccessful ? "['/tabs/tab1']" : "['/login-page']";
+  }
 
-  LoginValidation()
+  async LoginValidation()
   {
     //Aquí se debería de aplicar la validación de usuario ya existente
-    console.log(this.loginForm.value)
+    console.log("Login Form = ",this.loginForm.value);
 
-    /*
-    if(this.signupForm.get("user")?.value=='pepito' && this.signupForm.get("password")?.value=='123')
-    {
-      this.message="user esite";
+    try {
+      const loginReturn = await this.userService.logIn(this.loginForm.value);
+      console.log("Login returned = ", loginReturn);
+      if (loginReturn)
+      {
+        console.log("Logged in successfully");
+        this.loginSuccessful = true;
+        this.router.navigate(['/tabs/tab1']);
+      }
+      else
+      {
+        console.log("Account does not exist or the data is wrong.");
+        this.loginSuccessful = false;
+      }
+    } catch (error) {
+      console.error("Login error: ", error);
     }
-    */
-
-/* 
-    this.servicio.IniciarSesion(this.signupForm.get("user")?.value,this.signupForm.get("password")?.value).subscribe(data=>{
-       console.log(data);
-    });
-*/
   }
 
   formError(field: string): string | null
