@@ -29,12 +29,13 @@ var connection = mysql.createConnection({
 try
 {
   connection.connect();
-  console.log("Connected to database.");
 }
 catch (error)
 {
   console.log("Could not connect to database.");
 }
+
+console.log("Connected to database.");
 
 export function StartQuery(query: string): Promise<any>
 {

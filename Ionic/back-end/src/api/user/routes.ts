@@ -5,8 +5,9 @@ import middlewares from '../middlewares';
 
 const userRoutes = express.Router();
 
-userRoutes.get('/getUser', middlewares.authGuard, controllers.getUserFromToken)
-userRoutes.post('/signup', controllers.createAccount);
-userRoutes.post('/login', controllers.logIn);
+userRoutes.post('/signUp', controllers.createAccount);
+userRoutes.post('/logIn', controllers.logIn);
+userRoutes.get('/isEmailRegistered', controllers.isEmailRegistered);
+userRoutes.get('/getUserFromToken', middlewares.authGuard, controllers.getUserFromToken);
 
 export default userRoutes;

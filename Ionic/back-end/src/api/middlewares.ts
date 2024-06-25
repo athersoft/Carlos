@@ -10,6 +10,7 @@ export interface CustomRequest extends Request {
 
 function authGuard(req: Request, res: Response, next: NextFunction): void {
   
+  console.log(req.headers);
   const authorization = req.header('authorization');
   if (!authorization) {
     res.status(401).send({

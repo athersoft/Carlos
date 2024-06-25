@@ -11,11 +11,9 @@ import { Router } from '@angular/router';
 })
 export class LoginPagePage implements OnInit {
   loginForm: FormGroup;
-  loginSuccessful: boolean;
 
   constructor(private form:FormBuilder, private userService:UserService, private router: Router)
   {
-    this.loginSuccessful = false;
     this.loginForm = this.form.group
     ({
       email: ['', [Validators.required, Validators.email, Validators.maxLength(50)]],
@@ -23,7 +21,18 @@ export class LoginPagePage implements OnInit {
     });
   }
 
-  ngOnInit() {
+  ngOnInit()
+  {
+  }
+
+  ionViewDidEnter()
+  {
+    // If a session is already active, go directly to the tabs
+    if (this.userService.sessionExists())
+    {
+      console.log("A session alreaady exists");
+      this.router.navigate(['/tabs/tab1']);
+    }
   }
   get btnColor()
   {
@@ -34,30 +43,41 @@ export class LoginPagePage implements OnInit {
     //return this.loginForm.valid ? 'Sign Up!' : 'You must fill all the fields';
     return 'Log In';
   }
-  get btnRedirection()
+
+  get sessionExists()
   {
-    return this.loginSuccessful ? "['/tabs/tab1']" : "['/login-page']";
+    return this.userService.sessionExists() ? 'Yes' : 'No';
   }
 
   async LoginValidation()
   {
-    //Aquí se debería de aplicar la validación de usuario ya existente
-    console.log("Login Form = ",this.loginForm.value);
+    //console.log("Login Form = ",this.loginForm.value);
 
-    try {
-      const loginReturn = await this.userService.logIn(this.loginForm.value);
-      console.log("Login returned = ", loginReturn);
-      if (loginReturn)
-      {
-        console.log("Logged in successfully");
-        this.loginSuccessful = true;
-        this.router.navigate(['/tabs/tab1']);
-      }
-      else
+    try
+    {
+      //const emailExists = await this.userService.isEmailRegistered(this.loginForm.value);
+      //console.log("Email exists = ", emailExists);
+      
+      /*if (!emailExists)
       {
         console.log("Account does not exist or the data is wrong.");
         this.loginSuccessful = false;
       }
+      else*/
+      //{
+        const loginReturn = await this.userService.logIn(this.loginForm.value);
+        //console.log("Login returned = ", loginReturn);
+  
+        if (loginReturn)
+        {
+          console.log("Logged in successfully");
+          this.router.navigate(['/tabs/tab1']);
+        }
+        else
+        {
+          console.log("Account does not exist or the data is wrong.");
+        }
+      //}
     } catch (error) {
       console.error("Login error: ", error);
     }

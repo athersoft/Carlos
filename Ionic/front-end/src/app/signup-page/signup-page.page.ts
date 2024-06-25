@@ -4,7 +4,10 @@ import { FormError, errorMsg } from '../misc/form-errors';
 // import { AutenticacionService } from '../../services/autenticacion.service';
 
 import { passwordMatchValidator, rutValidator } from '../misc/form-validators';
-import { RegionesService } from '../misc/regiones.service';
+import { RegionesService } from '../services/regiones.service';
+
+import { UserService } from '../services/user-service.service';
+import { Router } from '@angular/router';
 
 interface Region {
   id: string;
@@ -32,7 +35,7 @@ export class SignupPagePage implements OnInit
 
   // constructor(private form:FormBuilder, private servicio:AutenticacionService)
   // La profesora había dejado lo de AuthenticationService y no se para que funcionay
-  constructor(private form:FormBuilder, private regionService: RegionesService)
+  constructor(private form:FormBuilder, private regionService: RegionesService, private userService:UserService, private router: Router)
   {
     this.signupForm = this.form.group
     ({
@@ -93,23 +96,27 @@ export class SignupPagePage implements OnInit
   }
 
   // Se ejecuta cuando se envía el formulario
-  SignupValidation()
+  async SignupValidation()
   {
-    //Aquí se debería de aplicar la validación de usuario ya existente
-    console.log(this.signupForm.value)
+    //console.log("Login Form = ",this.signupForm.value);
 
-    /*
-    if(this.signupForm.get("user")?.value=='pepito' && this.signupForm.get("password")?.value=='123')
+    try
     {
-      this.message="user esite";
-    }
-    */
+      const signupReturn = await this.userService.signUp(this.signupForm.value);
+      console.log("signup returned = ", signupReturn);
 
-/* 
-    this.servicio.IniciarSesion(this.signupForm.get("user")?.value,this.signupForm.get("password")?.value).subscribe(data=>{
-       console.log(data);
-    });
-*/
+      if (signupReturn)
+      {
+        console.log("Signed in successfully");
+        this.router.navigate(['/tabs/tab1']);
+      }
+      else
+      {
+        console.log("This email is already registered.");
+      }
+    } catch (error) {
+      console.error("Signup error: ", error);
+    }
   }
 
   formError(field: string): string | null
@@ -122,5 +129,4 @@ export class SignupPagePage implements OnInit
     
     return null;
   }
-
 }

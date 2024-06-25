@@ -8,6 +8,42 @@ import { StartQuery, IsEmailRegistered } from '../../main';
 
 const SECRET_KEY = process.env.JWT_SECRET_KEY ?? 'secretkey';
 
+async function isEmailRegistered(req: Request, res: Response): Promise<void>
+{
+  console.log("Checking if user exists");
+  // Gets the email received
+  const email = req.header('email');
+  console.log("Email: ",email);
+  
+  // Checks if there is data missing
+  if (!email) {
+    res.status(401).send({
+      message: 'Error: Missing data.',
+    });
+    return;
+  }
+
+  // Tries to get a user with the email
+  const retData = await StartQuery("SELECT id FROM user WHERE email = '" + email + "';");
+  const user = retData[0];
+  console.log("User =", user);
+
+  // If it doesn't find any, that means the email doesn't exists there
+  if (!user) {
+    res.status(200).send({
+      message: 'The account does not exist.',
+      response: false
+    });
+    return;
+  }
+
+  // If we reach this, that means the log in was successful, so we return true
+  res.status(200).send({
+    message: 'Account exists.',
+    response: true
+  });
+}
+
 async function createAccount(req: Request, res: Response): Promise<void>
 {
   console.log("Creating Account");
@@ -25,8 +61,13 @@ async function createAccount(req: Request, res: Response): Promise<void>
 
   // Checks if the account already exist
   // Checks if the email is already registered
-  //if (await alreadyRegistederEmail(req.body.email)) {
-  if (false) {
+  // Tries to get a user with the email
+  var retData = await StartQuery("SELECT id FROM user WHERE email = '" + email + "';");
+  var user = retData[0];
+  console.log("User =", user);
+
+  // If it doesn't find any, that means the email doesn't exists there
+  if (user) {
     res
       .status(400)
       .json({
@@ -40,13 +81,20 @@ async function createAccount(req: Request, res: Response): Promise<void>
   const hashedPass = bcrypt.hashSync(password, 10);
 
   // Creates the user using the values received
-  const retData = await StartQuery(`INSERT INTO user (name, email, password, run, region, commune) VALUES (${name}, ${email}, ${password}, ${run}, ${region}, ${commune});`);
-  const user = retData[0];
+  retData = await StartQuery(`INSERT INTO user (name, email, password, run, region, commune) VALUES ('${name}', '${email}', '${hashedPass}', '${run}', '${region}', '${commune}');`);
 
-  console.log("Return from insert = ",user);
+  const token = jwt.sign(
+    { name: email },
+    SECRET_KEY,
+    { expiresIn: '24h' },
+  );
 
   res.status(201).send({
     message: 'Account created successfully.',
+    token: {
+      token,
+      expiresOn: new Date(Date.now() + 24 * 60 * 60 * 1000).getTime(),
+    },
     user: {
       name: name,
       email: email
@@ -54,7 +102,8 @@ async function createAccount(req: Request, res: Response): Promise<void>
   });
 }
 
-async function logIn(req: Request, res: Response): Promise<void> {
+async function logIn(req: Request, res: Response): Promise<void>
+{
   console.log("Logging In");
 
   console.log(req.body);
@@ -141,7 +190,8 @@ async function getUserFromToken(req: Request, res: Response): Promise<void>
 }
 
 export default {
+  isEmailRegistered,
+  getUserFromToken,
   createAccount,
-  logIn,
-  getUserFromToken
+  logIn
 };
