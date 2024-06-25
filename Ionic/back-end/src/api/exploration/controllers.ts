@@ -9,7 +9,16 @@ const SECRET_KEY = process.env.JWT_SECRET_KEY ?? 'secretkey';
 
 async function getExploration(req: Request, res: Response): Promise<void>
 {
+  /*
+  Object format:
+  {
+    id: number,
+    userID: number
+  }
+  */
   console.log("Getting Exploration");
+
+  const email = req.header('email');
   /*
   // Converts the token
   const token = (req as CustomRequest).token;
@@ -25,6 +34,16 @@ async function getExploration(req: Request, res: Response): Promise<void>
       rol: usuario?.rol,
     },
   });
+  */
+}
+
+async function getExplorations(req: Request, res: Response): Promise<void>
+{
+  /*
+  Object format:
+  {
+    userID: number,
+  }
   */
 }
 

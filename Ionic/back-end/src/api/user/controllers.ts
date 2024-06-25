@@ -13,7 +13,7 @@ async function isEmailRegistered(req: Request, res: Response): Promise<void>
   console.log("Checking if user exists");
   // Gets the email received
   const email = req.header('email');
-  console.log("Email: ",email);
+  console.log("Email: ", email);
   
   // Checks if there is data missing
   if (!email) {

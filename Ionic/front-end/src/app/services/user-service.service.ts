@@ -18,6 +18,7 @@ interface User {
 export class UserService {
 
   loggedIn:boolean = false;
+  storageCreated:boolean = false;
   token = '';
   
     apiDirection:string = 'http://localhost:5001/users/';
@@ -26,7 +27,9 @@ export class UserService {
 
   async ngOnInit()
   {
-    await this.storage.create();
+    //await this.storage.create();
+    //console.log("Storage Created");
+    //this.storageCreated = true;
   }
 
   async isEmailRegistered(body:any): Promise<any>
@@ -46,13 +49,16 @@ export class UserService {
     }
   }
 
-  sessionExists()
+  async sessionExists()
   {
+    //if (!this.storageCreated) await this.ngOnInit();
+    //console.log("Storage Session Token:", await this.storage.get('token'));
     return this.loggedIn;
   }
 
   async logIn(body:Object): Promise<any>
   {
+    //if (!this.storageCreated) await this.ngOnInit();
     try
     {
       const data = await firstValueFrom<any>(this.http.post(this.apiDirection + 'login', body));
@@ -61,7 +67,8 @@ export class UserService {
       {
         this.loggedIn = true;
         this.token = data.token;
-        await this.storage.set('name', 'Mr. Ionitron');
+        //await this.storage.set('loggedIn', true);
+        //await this.storage.set('token', data.token);
       }
       return data;
     }
@@ -74,6 +81,7 @@ export class UserService {
 
   async signUp(body:Object): Promise<any>
   {
+    //if (!this.storageCreated) await this.ngOnInit();
     try
     {
       const data = await firstValueFrom(this.http.post(this.apiDirection + 'signUp', body));

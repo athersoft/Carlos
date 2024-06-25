@@ -11,8 +11,13 @@ import { Router } from '@angular/router';
 })
 export class LoginPagePage implements OnInit {
   loginForm: FormGroup;
+  wrongLoginMessage:string = "";
 
-  constructor(private form:FormBuilder, private userService:UserService, private router: Router)
+  constructor(
+    private form:FormBuilder,
+    private userService:UserService,
+    private router: Router
+  )
   {
     this.loginForm = this.form.group
     ({
@@ -25,15 +30,16 @@ export class LoginPagePage implements OnInit {
   {
   }
 
-  ionViewDidEnter()
+  async ionViewDidEnter()
   {
     // If a session is already active, go directly to the tabs
-    if (this.userService.sessionExists())
+    if ((await this.userService.sessionExists()).valueOf())
     {
-      console.log("A session alreaady exists");
+      console.log("A session already exists");
       this.router.navigate(['/tabs/tab1']);
     }
   }
+
   get btnColor()
   {
     return this.loginForm.valid ? 'primary' : 'tertiary';
@@ -43,41 +49,31 @@ export class LoginPagePage implements OnInit {
     //return this.loginForm.valid ? 'Sign Up!' : 'You must fill all the fields';
     return 'Log In';
   }
-
-  get sessionExists()
+  get cantLoginMessage()
   {
-    return this.userService.sessionExists() ? 'Yes' : 'No';
+    return this.wrongLoginMessage;
   }
 
   async LoginValidation()
   {
     //console.log("Login Form = ",this.loginForm.value);
+    this.wrongLoginMessage = "";
 
     try
     {
-      //const emailExists = await this.userService.isEmailRegistered(this.loginForm.value);
-      //console.log("Email exists = ", emailExists);
-      
-      /*if (!emailExists)
+      const loginReturn = await this.userService.logIn(this.loginForm.value);
+      //console.log("Login returned = ", loginReturn);
+
+      if (loginReturn)
+      {
+        console.log("Logged in successfully");
+        this.router.navigate(['/tabs/tab1']);
+      }
+      else
       {
         console.log("Account does not exist or the data is wrong.");
-        this.loginSuccessful = false;
+        this.wrongLoginMessage = "Account does not exist or the data is wrong.";
       }
-      else*/
-      //{
-        const loginReturn = await this.userService.logIn(this.loginForm.value);
-        //console.log("Login returned = ", loginReturn);
-  
-        if (loginReturn)
-        {
-          console.log("Logged in successfully");
-          this.router.navigate(['/tabs/tab1']);
-        }
-        else
-        {
-          console.log("Account does not exist or the data is wrong.");
-        }
-      //}
     } catch (error) {
       console.error("Login error: ", error);
     }

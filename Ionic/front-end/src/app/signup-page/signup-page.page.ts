@@ -28,14 +28,20 @@ export class SignupPagePage implements OnInit
   
   signupForm: FormGroup;
   message:string="";
-  loggedIn=false;
 
   regiones: Region[] = [];
   comunas: string[] = [];
 
+  emailExistsMessage:string = "";
+
   // constructor(private form:FormBuilder, private servicio:AutenticacionService)
   // La profesora había dejado lo de AuthenticationService y no se para que funcionay
-  constructor(private form:FormBuilder, private regionService: RegionesService, private userService:UserService, private router: Router)
+  constructor(
+    private form:FormBuilder,
+    private regionService: RegionesService,
+    private userService:UserService,
+    private router: Router
+  )
   {
     this.signupForm = this.form.group
     ({
@@ -50,19 +56,6 @@ export class SignupPagePage implements OnInit
     });
   }
 
-  get btnColor()
-  {
-    return this.signupForm.valid ? 'primary' : 'tertiary';
-  }
-  get btnText()
-  {
-    return this.signupForm.valid ? 'Sign Up' : 'You must fill all the fields';
-  }
-  get regionNumber()
-  {
-    return '0';
-  }
-
   ngOnInit() {
     this.regionService.getRegiones().subscribe(data => {
       this.regiones = Object.entries(data.regionNumber).map(([key, value]) => ({
@@ -73,7 +66,30 @@ export class SignupPagePage implements OnInit
         }));
     });
 
-    console.log(this.regiones);
+    //console.log(this.regiones);
+  }
+
+  async ionViewDidEnter()
+  {
+    // If a session is already active, go directly to the tabs
+    if ((await this.userService.sessionExists()).valueOf())
+    {
+      console.log("A session already exists");
+      this.router.navigate(['/tabs/tab1']);
+    }
+  }
+
+  get btnColor()
+  {
+    return this.signupForm.valid ? 'primary' : 'tertiary';
+  }
+  get btnText()
+  {
+    return this.signupForm.valid ? 'Sign Up' : 'You must fill all the fields';
+  }
+  get emailAlreadyExistsMessage()
+  {
+    return this.emailExistsMessage;
   }
 /*
   getRegionSelected()
@@ -86,7 +102,7 @@ export class SignupPagePage implements OnInit
   {
     const region = this.signupForm.get('region')!.value;
 
-    console.log(region);
+    //console.log(region);
 
     this.comunas = this.regiones.find(r => r.numero === region)!.comunas;
     if (this.comunas.length > 0) {
@@ -99,6 +115,7 @@ export class SignupPagePage implements OnInit
   async SignupValidation()
   {
     //console.log("Login Form = ",this.signupForm.value);
+    this.emailExistsMessage = "";
 
     try
     {
@@ -113,6 +130,7 @@ export class SignupPagePage implements OnInit
       else
       {
         console.log("This email is already registered.");
+        this.emailExistsMessage = "This email is already used!";
       }
     } catch (error) {
       console.error("Signup error: ", error);
