@@ -45,9 +45,7 @@ export class AccountPagePage implements OnInit {
       run: ['', [Validators.required, rutValidator]],
       email: ['', [Validators.required, Validators.email, Validators.maxLength(50)]],
       password: ['',[Validators.required, Validators.minLength(6), Validators.maxLength(50)]],
-      passwordConfirm: ['',[Validators.required, passwordMatchValidator]],
-      region: ['', Validators.required],
-      commune: [{value: '', disabled: true}, Validators.required]
+      passwordConfirm: ['',[Validators.required, passwordMatchValidator]]
     });
   }
 
@@ -67,7 +65,7 @@ export class AccountPagePage implements OnInit {
   }
   get btnText()
   {
-    return this.editForm.valid ? 'Sign Up' : 'You must fill all the fields';
+    return this.editForm.valid ? 'Modify' : 'You must fill all the fields';
   }
   get emailAlreadyExistsMessage()
   {
@@ -99,20 +97,20 @@ export class AccountPagePage implements OnInit {
 
     try
     {
-      const signupReturn = await this.userService.signUp(this.editForm.value);
-      console.log("signup returned = ", signupReturn);
+      const modReturn = await this.userService.modifyAccount(this.editForm.value);
+      console.log("mod returned = ", modReturn);
 
-      if (signupReturn)
+      if (modReturn)
       {
-        console.log("Modified in successfully");
+        console.log("Modified successfully");
       }
       else
       {
         console.log("This email is already registered.");
-        this.emailExistsMessage = "This email is already used!";
+        this.emailExistsMessage = "This email is already in use!";
       }
     } catch (error) {
-      console.error("Signup error: ", error);
+      console.error("Modification error: ", error);
     }
   }
 

@@ -245,7 +245,7 @@ async function modifyAccount(req: Request, res: Response): Promise<void>
   }
 
   // Checks if there is data missing
-  if (!req.body || !req.body.name || !req.body.email || !req.body.password || !req.body.run || !req.body.region) {
+  if (!req.body || !req.body.name || !req.body.email || !req.body.password || !req.body.run) {
     console.log("Error: Missing data");
     res.status(400).send({
       message: 'Error: Missing data.',
@@ -254,7 +254,7 @@ async function modifyAccount(req: Request, res: Response): Promise<void>
     return;
   }
 
-  const { name, email, password, run, region, commune } = req.body;
+  const { name, email, password, run } = req.body;
 
   // Checks if the account already exist
   // Checks if the email is already registered
@@ -280,7 +280,7 @@ async function modifyAccount(req: Request, res: Response): Promise<void>
   const hashedPass = bcrypt.hashSync(password, 10);
 
   // Tries to get the user using the token
-  const updData = await StartQuery(`UPDATE user SET name = '${name}', email = '${email}', password = '${hashedPass}', run = '${run}', region = '${region}', commune = '${commune}', WHERE id = ( SELECT userID FROM tokens WHERE token = '" + token + "' );`);
+  const updData = await StartQuery(`UPDATE user SET name = '${name}', email = '${email}', password = '${hashedPass}', run = '${run}' WHERE id = ( SELECT userID FROM tokens WHERE token = '${token}' );`);
   const user = updData[0];
   console.log("Update Data =", user);
 

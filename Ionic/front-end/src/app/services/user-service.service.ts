@@ -115,7 +115,7 @@ export class UserService {
   {
     try
     {
-      const data = await firstValueFrom<any>(this.http.put(this.apiDirection + 'modifyAccount', body));
+      const data = await firstValueFrom<any>(this.http.put(this.apiDirection + 'modifyAccount', body, { headers: this.httpHeader }));
       if (data && data.token)
       {
         this.loggedIn = true;

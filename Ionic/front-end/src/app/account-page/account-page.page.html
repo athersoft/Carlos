@@ -61,9 +61,6 @@
             <ion-button (click)="cancelEdit()">Cancel</ion-button>
           </ion-buttons>
           <ion-title>Edit Account</ion-title>
-          <ion-buttons slot="end">
-            <ion-button (click)="confirmEdit()" [strong]="true" color="primary" [disabled]="!editForm.valid">Confirm</ion-button>
-          </ion-buttons>
         </ion-toolbar>
       </ion-header>
       <ion-content class="ion-padding">
@@ -132,44 +129,6 @@
               required
             >
             </ion-input>
-          </ion-item>
-
-          <ion-item lines="full">
-            <ion-select
-              formControlName="region"
-              labelPlacement="stacked"
-              placeholder="Select a region"
-              okText="Select"
-              cancelText="Cancel"
-              (ionChange)="onRegionChange()"
-            >
-              <div slot="label">Region</div>
-        
-              <ion-select-option
-                *ngFor="let region of regiones"
-                [value]="region.numero">
-                {{region.nombre}}
-              </ion-select-option>
-            </ion-select>
-          </ion-item>
-
-          <ion-item lines="full">
-            <ion-select
-              formControlName="commune"
-              labelPlacement="stacked"
-              placeholder="Select commune"
-              okText="Select"
-              cancelText="Cancel"
-            >
-              <div slot="label">Commune</div>
-              
-              <ion-select-option
-                *ngFor="let comuna of comunas"
-                [value]="comuna"
-              >
-                {{comuna}}
-              </ion-select-option>
-            </ion-select>
           </ion-item>
 
           <ion-text color="danger">
