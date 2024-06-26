@@ -148,6 +148,8 @@ export class UserService {
       const userData = await firstValueFrom<any>(this.http.delete(this.apiDirection + 'deleteAccount', { headers: this.httpHeader } ));
       console.log("Del Data: ", userData);
 
+      this.logOut();
+
       return userData.response;
     }
     catch (error)

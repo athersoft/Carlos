@@ -128,14 +128,21 @@ async function createAccount(req: Request, res: Response): Promise<void>
 
   // Creates the user using the values received
   retData = await StartQuery(`INSERT INTO user (name, email, password, run, region, commune) VALUES ('${name}', '${email}', '${hashedPass}', '${run}', '${region}', '${commune}');`);
-
+  
   console.log("User inserted successfully");
+
+  const idData = await StartQuery("SELECT id FROM user WHERE email = '" + email + "';");
+  const idUser = idData[0].id;
 
   const token = jwt.sign(
     { name: email },
     SECRET_KEY,
     { expiresIn: '24h' },
   );
+
+  const retDatatoken = await StartQuery("INSERT INTO tokens (token, userID) VALUES ('" + token + "', '" + idUser + "');");
+  const tokenData = retDatatoken[0];
+  console.log("Login Token SQL Return =", tokenData);
 
   res.status(201).send({
     message: 'Account created successfully.',
@@ -323,7 +330,6 @@ async function deleteAccount(req: Request, res: Response): Promise<void>
   }
 
   // Tries to get the user using the token
-  //const retData = await StartQuery("SELECT user.id, user.name, user.email, user.run, user.region, user.commune FROM user JOIN tokens ON user.id = tokens.userID WHERE token = '" + token + "';");
   const retData = await StartQuery("DELETE FROM user WHERE id IN ( SELECT userID FROM tokens WHERE token = '" + token + "' );");
   const user = retData[0];
   console.log("Ret Data =", user);
