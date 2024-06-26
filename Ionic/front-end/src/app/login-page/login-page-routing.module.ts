@@ -3,21 +3,17 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { LoginPagePage } from './login-page.page';
 
+import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
+
 const routes: Routes = [
   {
     path: '',
     component: LoginPagePage
   }
-  /*
-  {
-    path: 'signup-page',
-    loadChildren: () => import('../signup-page/signup-page.module').then( m => m.SignupPagePageModule)
-  }
-  */
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+  imports: [RouterModule.forChild(routes), RecaptchaModule, RecaptchaFormsModule],
+  exports: [RouterModule, RecaptchaModule, RecaptchaFormsModule],
 })
 export class LoginPagePageRoutingModule {}

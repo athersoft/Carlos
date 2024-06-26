@@ -9,13 +9,17 @@ import { LoginPagePageRoutingModule } from './login-page-routing.module';
 
 import { LoginPagePage } from './login-page.page';
 
+import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
+
 @NgModule({
   imports: [
     CommonModule,
     IonicModule,
     LoginPagePageRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RecaptchaModule,
+    RecaptchaFormsModule
   ],
   declarations: [LoginPagePage]
 })

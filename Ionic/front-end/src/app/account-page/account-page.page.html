@@ -1,0 +1,200 @@
+<ion-header [translucent]="true">
+
+  <ion-toolbar>
+    <div class="header-tabs">
+
+      <ion-button [routerLink]="['/tabs/tab1']" color="secondary" aria-label="Volver">
+        <ion-icon name="chevron-back-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+
+      <ion-title>
+        Account Settings
+      </ion-title>
+
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="centro">
+    <ion-list>
+      
+      <ion-item>
+        <ion-toolbar>
+          <ion-button (click)="logOut()" color="warning" aria-label="Cerrar Sesión" expand="block">
+            Log out
+            <ion-icon name="log-out-outline" slot="end"></ion-icon>
+          </ion-button>
+        </ion-toolbar>
+      </ion-item>
+
+      <ion-item>
+        <ion-toolbar>
+          <ion-button color="secondary" aria-label="Botón de prueba" expand="block" (click)="openModal()">
+            Edit account info
+          </ion-button>
+        </ion-toolbar>
+      </ion-item>
+      
+      <ion-item>
+        <ion-toolbar>
+          <ion-button id="deletionAlert" color="danger" aria-label="Botón de prueba" expand="block">
+            Delete account
+          </ion-button>
+        </ion-toolbar>
+      </ion-item>
+      
+    </ion-list>
+  </div>
+
+  <!--
+  Form
+  -->
+
+  <ion-modal
+    (willDismiss)="onWillDismissEdit($event)"
+  >
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button (click)="cancelEdit()">Cancel</ion-button>
+          </ion-buttons>
+          <ion-title>Edit Account</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="confirmEdit()" [strong]="true" color="primary" [disabled]="!editForm.valid">Confirm</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <form [formGroup]="editForm" (ngSubmit)="modificationValidation()" class="formStyle">
+
+          <ion-item lines="none">
+            <ion-input
+              type="text"
+              formControlName="name"
+              placeholder="Name Surname"
+              label="Full Name"
+              labelPlacement="stacked"
+              [errorText]="formError('name')"
+              required
+            >
+            </ion-input>
+          </ion-item>
+
+          <ion-item lines="none">
+            <ion-input
+              type="text"
+              formControlName="run"
+              placeholder="12345678-9"
+              label="R.U.N."
+              labelPlacement="stacked"
+              [errorText]="formError('run')"
+              required
+            >
+            </ion-input>
+          </ion-item>
+
+          <ion-item lines="none">
+            <ion-input
+              type="email"
+              formControlName="email"
+              placeholder="example@domain.com"
+              label="E-mail"
+              labelPlacement="stacked"
+              [errorText]="formError('email')"
+              required
+            >
+            </ion-input>
+          </ion-item>
+          
+          <ion-item lines="none">
+            <ion-input
+              type="password"
+              formControlName="password"
+              placeholder="pAsSwoRD123"
+              label="Password"
+              labelPlacement="stacked"
+              [errorText]="formError('password')"
+              required
+            >
+            </ion-input>
+          </ion-item>
+
+          <ion-item lines="none">
+            <ion-input
+              type="password"
+              formControlName="passwordConfirm"
+              placeholder="Repeat your password"
+              label="Confirm Password"
+              labelPlacement="stacked"
+              [errorText]="formError('passwordConfirm')"
+              required
+            >
+            </ion-input>
+          </ion-item>
+
+          <ion-item lines="full">
+            <ion-select
+              formControlName="region"
+              labelPlacement="stacked"
+              placeholder="Select a region"
+              okText="Select"
+              cancelText="Cancel"
+              (ionChange)="onRegionChange()"
+            >
+              <div slot="label">Region</div>
+        
+              <ion-select-option
+                *ngFor="let region of regiones"
+                [value]="region.numero">
+                {{region.nombre}}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item lines="full">
+            <ion-select
+              formControlName="commune"
+              labelPlacement="stacked"
+              placeholder="Select commune"
+              okText="Select"
+              cancelText="Cancel"
+            >
+              <div slot="label">Commune</div>
+              
+              <ion-select-option
+                *ngFor="let comuna of comunas"
+                [value]="comuna"
+              >
+                {{comuna}}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-text color="danger">
+            {{emailAlreadyExistsMessage}}
+          </ion-text>
+
+          <ion-button
+            type="submit"
+            expand="block"
+            [color]="btnColor"
+            [disabled]="!editForm.valid"
+            >
+            {{btnText}}
+          </ion-button>
+
+        </form>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+  <ion-alert
+    trigger="deletionAlert"
+    header="Are you sure you want to permanently delete your account?"
+    [buttons]="alertButtons"
+    (didDismiss)="confirmDelete($event)"
+  ></ion-alert>
+
+</ion-content>

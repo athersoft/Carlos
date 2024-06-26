@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 import { FormError, errorMsg } from '../misc/form-errors';
 import { UserService } from '../services/user-service.service';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
+import { RecaptchaModule, RecaptchaFormsModule } from "ng-recaptcha";
 
 @Component({
   selector: 'app-login-page',
@@ -12,6 +14,7 @@ import { Router } from '@angular/router';
 export class LoginPagePage implements OnInit {
   loginForm: FormGroup;
   wrongLoginMessage:string = "";
+  isCaptchaValid = true;
 
   constructor(
     private form:FormBuilder,
@@ -42,12 +45,16 @@ export class LoginPagePage implements OnInit {
 
   get btnColor()
   {
-    return this.loginForm.valid ? 'primary' : 'tertiary';
+    return this.isCaptchaValid && this.loginForm.valid ? 'primary' : 'tertiary';
   }
   get btnText()
   {
     //return this.loginForm.valid ? 'Sign Up!' : 'You must fill all the fields';
     return 'Log In';
+  }
+  get canLogIn()
+  {
+    return this.isCaptchaValid && this.loginForm.valid;
   }
   get cantLoginMessage()
   {
@@ -88,5 +95,16 @@ export class LoginPagePage implements OnInit {
     }
     
     return null;
+  }
+
+  get siteKey()
+  {
+    return environment.recaptcha.siteKey;
+  }
+
+  captchaResolved(event:(string|null))
+  {
+    console.log("Captcha Resolved", event);
+    this.isCaptchaValid = true;
   }
 }

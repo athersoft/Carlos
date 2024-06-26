@@ -26,7 +26,11 @@ const routes: Routes = [
   {
     path: 'alert-page',
     loadChildren: () => import('./alert-page/alert-page.module').then( m => m.AlertPagePageModule)
+  },  {
+    path: 'account-page',
+    loadChildren: () => import('./account-page/account-page.module').then( m => m.AccountPagePageModule)
   }
+
 
 ];
 @NgModule({

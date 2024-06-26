@@ -1,7 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { FormError, errorMsg } from '../misc/form-errors';
-// import { AutenticacionService } from '../../services/autenticacion.service';
 
 import { passwordMatchValidator, rutValidator } from '../misc/form-validators';
 import { RegionesService } from '../services/regiones.service';
@@ -27,7 +26,6 @@ export class SignupPagePage implements OnInit
   @ViewChild('regionDropdown', { static: false }) regionDropdown?: ElementRef;
   
   signupForm: FormGroup;
-  message:string="";
 
   regiones: Region[] = [];
   comunas: string[] = [];
@@ -51,7 +49,7 @@ export class SignupPagePage implements OnInit
       password: ['',[Validators.required, Validators.minLength(6), Validators.maxLength(50)]],
       passwordConfirm: ['',[Validators.required, passwordMatchValidator]],
       region: ['', Validators.required],
-      comuna: [{value: '', disabled: true}, Validators.required],
+      commune: [{value: '', disabled: true}, Validators.required],
       tyc: [false, Validators.requiredTrue]
     });
   }
@@ -106,9 +104,9 @@ export class SignupPagePage implements OnInit
 
     this.comunas = this.regiones.find(r => r.numero === region)!.comunas;
     if (this.comunas.length > 0) {
-      this.signupForm.get('comuna')!.enable();
+      this.signupForm.get('commune')!.enable();
     }
-    else this.signupForm.get('comuna')!.disable();
+    else this.signupForm.get('commune')!.disable();
   }
 
   // Se ejecuta cuando se envía el formulario

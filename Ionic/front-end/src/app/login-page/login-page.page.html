@@ -56,6 +56,8 @@
         </ion-input>
       </ion-item>
       
+      <re-captcha (resolved)="captchaResolved($event)" [siteKey]="siteKey"></re-captcha>
+      
       <ion-text color="danger">
         {{cantLoginMessage}}
       </ion-text>
@@ -63,7 +65,7 @@
         type="submit"
         expand="block"
         [color]="btnColor"
-        [disabled]="!loginForm.valid"
+        [disabled]="!canLogIn"
         >  
         {{btnText}}
       </ion-button>
