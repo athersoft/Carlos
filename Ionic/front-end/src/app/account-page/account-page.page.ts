@@ -52,6 +52,16 @@ export class AccountPagePage implements OnInit {
   ngOnInit() {
   }
 
+  async ionViewDidEnter()
+  {
+    // If a session NOT active, go directly to the title
+    if (!(await this.userService.sessionExists()).valueOf())
+    {
+      console.log("You need to use an account.");
+      this.router.navigate(['/title-page']);
+    }
+  }
+
   logOut()
   {
     this.userService.logOut();

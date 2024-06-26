@@ -5,6 +5,8 @@ import { OverlayEventDetail } from '@ionic/core/components';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { FormError, errorMsg } from '../misc/form-errors';
 import { VictimService } from '../services/victim-service.service';
+import { Router } from '@angular/router';
+import { UserService } from '../services/user-service.service';
 
 interface Victim {
   id: number;
@@ -22,7 +24,13 @@ export class Tab3Page {
   public results: any;
   public selectedVictim: any;
 
-  constructor(private http: HttpClient, private form:FormBuilder, private victimService:VictimService)
+  constructor(
+    private http: HttpClient,
+    private form:FormBuilder,
+    private victimService:VictimService,
+    private userService:UserService,
+    private router:Router
+  )
   {
     this.editVictimForm = this.form.group
     ({
@@ -39,6 +47,16 @@ export class Tab3Page {
       console.log(this.victims)
       this.results = [...this.victims.victims];
     });
+  }
+
+  async ionViewDidEnter()
+  {
+    // If a session NOT active, go directly to the title
+    if (!(await this.userService.sessionExists()).valueOf())
+    {
+      console.log("You need to use an account.");
+      this.router.navigate(['/title-page']);
+    }
   }
 
   handleInput(event:Event)

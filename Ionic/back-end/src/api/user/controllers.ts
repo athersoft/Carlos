@@ -259,7 +259,7 @@ async function modifyAccount(req: Request, res: Response): Promise<void>
   // Checks if the account already exist
   // Checks if the email is already registered
   // Tries to get a user with the email
-  var emailData = await StartQuery("SELECT id FROM user WHERE email = '" + email + "';");
+  var emailData = await StartQuery(`SELECT id FROM user WHERE email = '${email}' AND id <> ( SELECT userID FROM tokens WHERE token = '${token}' );`);
   var emailData0 = emailData[0];
   console.log("Email data =", emailData0);
 
